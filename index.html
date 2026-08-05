@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Yosr Jabloun — Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <nav id="navbar">
+        <div class="logo">YJ</div>
+        <button id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#wordpress-projects">WordPress</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section id="hero">
+        <div class="container">
+        <img src="assets/Gemini_Generated_Image_8khxxe8khxxe8khx.png?v=2" alt="Yosr Jabloun" id="profile-pic" />
+        <h1>Yosr Jabloun</h1>
+        <p class="hero-title">Final-year Telecommunications Engineering student @ ENIT + second-year master's student in traitement de l'information et complexité du vivant | AI & Computer Vision Enthusiast</p>
+        <p class="hero-tagline">Turning telecom systems-thinking into applied AI — computer vision, deep learning, and building things that actually hold up in the real world.</p>
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-primary">View Projects</a>
+          <a href="#contact" class="btn btn-secondary">Contact Me</a>
+        </div>
+      </div>
+      </section>
+
+      <section id="about">
+        <div class="container">
+        <h2>About Me</h2>
+        <p>I'm a final-year Telecommunications Engineering student at the National Engineering School of Tunis (ENIT) and, in parallel, a second-year master's student in traitement de l'information et complexité du vivant, with a growing passion for AI, Machine Learning, Deep Learning, and Data Engineering. My academic background in telecommunications gives me a strong systems-level perspective, which I've been channeling into applied AI work — particularly computer vision and building AI systems that are robust, efficient, and trustworthy. I'm currently an Artificial Intelligence Intern at Talan Tunisie, working on World Models. Outside of coursework, I've held leadership roles within the IEEE community, including Chair of the IEEE ENIT Student Branch (2025) and currently Educational Activities Committee Member at the IEEE Technical Activities Committee, Tunisia Section.</p>
+      </div>
+      </section>
+
+      <section id="education">
+        <div class="container">
+        <h2>Education</h2>
+        <div class="education-grid">
+          <div class="education-entry">
+            <div class="education-visuals">
+              <div class="edu-logo"><img src="assets/enit2.jpg" alt="ENIT logo" /></div>
+            </div>
+            <h3>École Nationale d'Ingénieurs de Tunis (ENIT)</h3>
+            <p>ICT Engineering + Master’s degree in Technology of Information and Complexity of Living Systems</p>
+            <p>2024–2027</p>
+          </div>
+          <div class="education-entry">
+            <div class="education-visuals">
+              <div class="edu-logo"><img src="assets/logo-ipein.png" alt="IPEIN logo" /></div>
+            </div>
+            <h3>IPEIN Nabeul</h3>
+            <p>Preparatory Program for Engineering Studies, Physics/Chemistry</p>
+            <p>2022–2024</p>
+          </div>
+        </div>
+      </div>
+      </section>
+
+      <section id="skills">
+        <div class="container">
+        <h2>Skills</h2>
+        <div class="skill-group">
+          <h3>Languages</h3>
+          <span class="skill-badge">Python</span>
+          <span class="skill-badge">C/C++</span>
+          <span class="skill-badge">MATLAB</span>
+        </div>
+        <div class="skill-group">
+          <h3>AI/ML & Computer Vision</h3>
+          <span class="skill-badge">TensorFlow</span>
+          <span class="skill-badge">Keras</span>
+          <span class="skill-badge">OpenCV</span>
+          <span class="skill-badge">TensorFlow.js</span>
+          <span class="skill-badge">MediaPipe</span>
+          <span class="skill-badge">CNN</span>
+          <span class="skill-badge">BiLSTM</span>
+          <span class="skill-badge">VideoMAE</span>
+          <span class="skill-badge">Transfer Learning</span>
+        </div>
+        <div class="skill-group">
+          <h3>Other</h3>
+          <span class="skill-badge">Networking (CCNA fundamentals)</span>
+          <span class="skill-badge">Fiber Optics</span>
+          <span class="skill-badge">Embedded Systems (Arduino)</span>
+        </div>
+      </div>
+      </section>
+
+      <section id="projects">
+        <div class="container">
+        <h2>Technical Projects</h2>
+        <div class="project-grid">
+          <div class="project-card">
+            <div class="project-gallery">
+              <img src="assets/project-tunilip-1.jpg" alt="TUNILip+ screenshot 1" />
+              <img src="assets/project-tunilip-2.jpg" alt="TUNILip+ screenshot 2" />
+              <img src="assets/project-tunilip-3.jpg" alt="TUNILip+ screenshot 3" />
+            </div>
+            <h3>TUNILip+ — Automated Lip Reading for Tunisian Dialect</h3>
+            <p>End-of-year project building an automated lip-reading system for Tunisian Arabic from scratch — no prior dataset or benchmark existed. Built a custom dataset from 50+ volunteer speakers, then compared four modeling approaches (CNN-BiLSTM, MobileNetV2 transfer learning, VideoMAE fine-tuning, and a hybrid ensemble). Deployed fully client-side in the browser via TensorFlow.js, with no video ever leaving the device.</p>
+            <div class="tags">
+              <span class="tag">Python</span>
+              <span class="tag">TensorFlow.js</span>
+              <span class="tag">MediaPipe</span>
+              <span class="tag">CNN</span>
+              <span class="tag">BiLSTM</span>
+              <span class="tag">VideoMAE</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/yosr580/TUNILip-.git" target="_blank" rel="noopener">GitHub</a>
+              <span class="link-muted">Live demo unavailable</span>
+              <a href="https://drive.google.com/file/d/1dlTboWWM9z6d0yeZWBFFMc_t921f33ER/view?usp=sharing" target="_blank" rel="noopener">Report</a>
+            </div>
+          </div>
+          <div class="project-card">
+            <div class="project-gallery">
+              <img src="assets/project-antispoofing-1.jpg" alt="Facial Recognition Anti-Spoofing screenshot 1" />
+              <img src="assets/project-antispoofing-2.jpg" alt="Facial Recognition Anti-Spoofing screenshot 2" />
+              <img src="assets/project-antispoofing-3.jpg" alt="Facial Recognition Anti-Spoofing screenshot 3" />
+            </div>
+            <h3>Anti-Spoofing Module for Facial Recognition</h3>
+            <p>Built during a Computer Vision internship at Groupe SFM. Designed and trained a CNN-based binary classifier (Real vs. Spoof) in Keras/TensorFlow to detect presentation attacks (printed photos, screen replay, masks) against real-time facial recognition. Deployed within a full GUI with live webcam feed, secure login/logout, and a guided multi-angle registration flow resistant to spoofing at enrollment.</p>
+            <div class="tags">
+              <span class="tag">Python</span>
+              <span class="tag">TensorFlow</span>
+              <span class="tag">Keras</span>
+              <span class="tag">OpenCV</span>
+              <span class="tag">CNN</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/yosr580/Face-anti-spoofing-module-.git" target="_blank" rel="noopener">GitHub</a>
+              <a href="https://drive.google.com/file/d/1SxT4gTt9WsqTBHzb-FCmWP3sCD4qwlVr/view?usp=sharing" target="_blank" rel="noopener">Report</a>
+            </div>
+          </div>
+          <div class="project-card">
+            <div class="project-gallery">
+              <img src="assets/project-surveillance-1.jpg" alt="Intelligent Video Surveillance screenshot 1" />
+              <img src="assets/project-surveillance-2.jpg" alt="Intelligent Video Surveillance screenshot 2" />
+              <img src="assets/project-surveillance-3.jpg" alt="Intelligent Video Surveillance screenshot 3" />
+            </div>
+            <h3>Intelligent Video Surveillance — Face Detection System</h3>
+            <p>Team project combining an ArduCam camera with a Python facial recognition pipeline. The system captures real-time video, detects unknown faces, sends automatic email alerts with the captured image, and generates a PDF attendance report.</p>
+            <div class="tags">
+              <span class="tag">Python</span>
+              <span class="tag">OpenCV</span>
+              <span class="tag">face_recognition</span>
+              <span class="tag">Arduino</span>
+              <span class="tag">SMTP</span>
+              <span class="tag">ReportLab</span>
+            </div>
+            <div class="project-links">
+              <span class="link-muted">GitHub unavailable</span>
+            </div>
+          </div>
+          <div class="project-card">
+            <div class="project-gallery">
+              <img src="assets/project-fiberlaser-1.jpg" alt="Figure-of-Eight Fiber Laser Simulation screenshot 1" />
+              <img src="assets/project-fiberlaser-2.jpg" alt="Figure-of-Eight Fiber Laser Simulation screenshot 2" />
+              <img src="assets/project-fiberlaser-3.png" alt="Figure-of-Eight Fiber Laser Simulation screenshot 3" />
+            </div>
+            <h3>Figure-of-Eight Fiber Laser Simulation</h3>
+            <p>Simulation and modeling of a figure-of-eight fiber laser architecture known for producing stable ultrashort pulses. Modeled the system using the nonlinear Schrödinger equation and implemented the Split-Step Fourier Method (SSFM) to analyze pulse evolution within the cavity.</p>
+            <div class="tags">
+              <span class="tag">MATLAB</span>
+              <span class="tag">Photonics</span>
+              <span class="tag">Fiber Optics</span>
+            </div>
+            <div class="project-links">
+              <a href="https://drive.google.com/file/d/1n50iuRQWp-SpdmBsvJo6CLMxY4H7jByF/view?usp=sharing" target="_blank" rel="noopener">Report</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      </section>
+
+      <section id="wordpress-projects">
+        <div class="container">
+        <h2>WordPress & Community Websites</h2>
+        <div class="project-grid">
+          <div class="project-card">
+            <div class="project-gallery">
+              <img src="assets/wp-project-ieee-enit-1.jpg" alt="IEEE ENIT Student Branch Website screenshot 1" />
+              <img src="assets/wp-project-ieee-enit-2.jpg" alt="IEEE ENIT Student Branch Website screenshot 2" />
+              <img src="assets/wp-project-ieee-enit-3.jpg" alt="IEEE ENIT Student Branch Website screenshot 3" />
+            </div>
+            <video class="project-video" controls preload="metadata" poster="assets/wp-project-ieee-enit-poster.jpg">
+              <source src="assets/videos/wp-project-ieee-enit.mp4" type="video/mp4" />
+              Your browser does not support embedded videos.
+            </video>
+            <h3>IEEE ENIT Student Branch — Official Website</h3>
+            <p>Designed and developed the official WordPress website for the IEEE ENIT Student Branch, as part of my role as Chair of the Student Branch (2025).</p>
+            <div class="tags">
+              <span class="tag">WordPress</span>
+            </div>
+            <div class="project-links">
+              <a href="https://enit.ieee.tn" target="_blank" rel="noopener">Visit Site</a>
+            </div>
+          </div>
+          <div class="project-card">
+            <div class="project-gallery">
+              <img src="assets/ed1.png" alt="IEEE Education Week Tunisia Website screenshot 1" />
+              <img src="assets/ed2.png" alt="IEEE Education Week Tunisia Website screenshot 2" />
+              <img src="assets/ed3.png" alt="IEEE Education Week Tunisia Website screenshot 3" />
+            </div>
+            <video class="project-video" controls preload="metadata" poster="assets/wp-project-edu-week-poster.jpg">
+              <source src="assets/videos/wp-project-edu-week.mp4" type="video/mp4" />
+              Your browser does not support embedded videos.
+            </video>
+            <h3>IEEE Education Week Tunisia — Website</h3>
+            <p>Developed the website for IEEE Education Week in Tunisia, in collaboration with the IEEE Tunisia Section, as part of my role in the Educational Activities Committee within the Technical Activities Committee.</p>
+            <div class="tags">
+              <span class="tag">WordPress</span>
+            </div>
+            <div class="project-links">
+              <a href="https://educationweek.ieee.tn/" target="_blank" rel="noopener">Visit Site</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      </section>
+
+      <section id="experience">
+        <div class="container">
+        <h2>Experience & Leadership</h2>
+        <div class="timeline">
+          <div class="timeline-item">
+            <h3>Artificial Intelligence Intern</h3>
+            <p><strong>Talan Tunisie</strong> — Jun 2026 – Present</p>
+            <p>Working on World Models.</p>
+            <span class="link-muted">Certificate unavailable</span>
+          </div>
+          <div class="timeline-item">
+            <h3>Educational Activities Committee Member</h3>
+            <p><strong>IEEE Tunisia Section</strong> — Mar 2026 – Present</p>
+            <span class="link-muted">Certificate unavailable</span>
+          </div>
+          <div class="timeline-item">
+            <h3>Chair</h3>
+            <p><strong>IEEE ENIT Student Branch</strong> — Jan 2025 – Dec 2025</p>
+            <span class="link-muted">Certificate unavailable</span>
+          </div>
+          <div class="timeline-item">
+            <h3>Coordination Committee Chair</h3>
+            <p><strong>IEEE YP Tunisia taskforce</strong> — Apr 2026 – Present</p>
+            <span class="link-muted">Certificate unavailable</span>
+          </div>
+          <div class="timeline-item">
+            <h3>Computer Vision Intern</h3>
+            <p><strong>Groupe SFM</strong> — Jul 2025 – Aug 2025</p>
+            <p>Anti-spoofing for real-time facial recognition.</p>
+            <span class="link-muted">Certificate unavailable</span>
+          </div>
+          <div class="timeline-item">
+            <h3>Volunteer</h3>
+            <p><strong>Tunisian Red Crescent</strong> — Jul 2019 – Mar 2024</p>
+            <span class="link-muted">Certificate unavailable</span>
+          </div>
+        </div>
+      </div>
+      </section>
+
+      <section id="contact">
+        <div class="container">
+        <h2>Get In Touch</h2>
+        <form id="contact-form">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required />
+
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required />
+
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+
+          <button type="submit">Send Message</button>
+        </form>
+        <div class="contact-links">
+          <a href="https://www.linkedin.com/in/yosr-jabloun-232421333/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="mailto:yosser.jabloun@etudiant-enit.utm.tn">yosser.jabloun@etudiant-enit.utm.tn</a>
+          <a href="https://github.com/yosr580" target="_blank" rel="noopener">GitHub</a>
+          <a href="tel:+21629469140">+216 29 469 140</a>
+        </div>
+      </div>
+      </section>
+    </main>
+
+    <script src="script.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+# Ignore editor and system files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Node and package files
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# OS files
+*.swp
+*~
+
+# IDE files
+.vscode/
+.idea/
+*.code-workspace
+
+# Build output
+dist/
+build/
+
+# Logs
+*.log
+
+# Keep assets folder tracked
+!assets/
+!assets/**
