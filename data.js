@@ -119,5 +119,10 @@ window.portfolioData = {
     "assets/designs/677755817_122298842162217211_8422573063453076187_n.webp",
     "assets/designs/680151601_122299229084217211_1561958480890299484_n.webp"
   ],
+  languages: [
+    { name: "Anglais", level: "B2" },
+    { name: "Fran\u00e7ais", level: "B2" },
+    { name: "Allemand", level: "B1" }
+  ],
   certificates: [] // Add { title, issuer, date, image, url } objects here when ready.
 };

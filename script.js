@@ -46,18 +46,25 @@
     const designs = data.designs || [];
     host.innerHTML = designs.map((src, index) => `<button class="design-card reveal" style="--tile-index:${index}" type="button" data-gallery="designs" data-index="${index}" aria-label="View ${esc(captionFor(src))}"><img src="${esc(src)}" alt="${esc(captionFor(src))}" loading="lazy" decoding="async"><span class="design-view">View</span></button>`).join("");
     const cards = [...host.children];
-    if (cards.length > 12) {
-      cards.slice(12).forEach((card) => card.hidden = true);
+    if (cards.length > 4) {
+      cards.slice(4).forEach((card) => card.hidden = true);
       const button = document.querySelector("#show-designs");
       button.hidden = false;
+      button.textContent = "Show more designs";
       button.setAttribute("aria-expanded", "false");
       button.addEventListener("click", () => {
         const expanded = button.getAttribute("aria-expanded") !== "true";
-        cards.slice(12).forEach((card) => card.hidden = !expanded);
+        cards.slice(4).forEach((card) => card.hidden = !expanded);
         button.setAttribute("aria-expanded", String(expanded));
-        button.textContent = expanded ? "Show fewer designs" : "Show all designs";
+        button.textContent = expanded ? "Show fewer designs" : "Show more designs";
       });
     }
+  }
+
+
+  function renderLanguages() {
+    const host = document.querySelector("#language-list");
+    host.innerHTML = (data.languages || []).map((language) => `<span class="language-item"><span>${esc(language.name)}</span><strong>${esc(language.level)}</strong></span>`).join("");
   }
 
   function renderCertificates() {
@@ -301,6 +308,7 @@
     renderProjects();
     renderExperiences();
     renderDesigns();
+    renderLanguages();
     renderCertificates();
     initLightbox();
     initBento();
