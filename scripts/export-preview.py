@@ -46,6 +46,13 @@ def main():
     SOCIAL.mkdir(parents=True, exist_ok=True)
     with serve_local_site() as port, sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
+        # Keep raster favicons in sync with the violet YJ SVG mark.
+        for size, filename in [(32, "favicon-32.png"), (180, "apple-touch-icon.png")]:
+            favicon = browser.new_page(viewport={"width": size, "height": size}, device_scale_factor=1)
+            favicon.set_content(f'<img src="http://127.0.0.1:{port}/assets/favicon.svg" width="{size}" height="{size}" alt="YJ">')
+            favicon.locator("img").wait_for(state="visible")
+            favicon.locator("img").screenshot(path=str(ROOT / "assets" / filename), type="png")
+            favicon.close()
         page = browser.new_page(viewport={"width": 1440, "height": 900}, device_scale_factor=1)
         page.emulate_media(reduced_motion="reduce")
         page.goto(f"http://127.0.0.1:{port}/", wait_until="domcontentloaded")
@@ -66,7 +73,7 @@ def main():
         e_learnit.scroll_into_view_if_needed()
         wait_for_images(e_learnit)
         e_learnit.screenshot(path=str(SOCIAL / "site-the-one.jpg"), type="jpeg", quality=90)
-        skills = page.locator("#skills .skill-card").first
+        skills = page.locator("#skills .skill-group").first
         skills.scroll_into_view_if_needed()
         wait_for_images(skills)
         skills.screenshot(path=str(SOCIAL / "site-skills.jpg"), type="jpeg", quality=88)

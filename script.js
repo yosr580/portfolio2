@@ -1,324 +1,93 @@
 (() => {
-  "use strict";
-
+  'use strict';
   const data = window.portfolioData || {};
-  const esc = (value) => String(value ?? "").replace(/[&<>"']/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[char]);
+  const $ = (selector, root = document) => root.querySelector(selector);
+  const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
+  const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const marked = value => esc(value).replace(/\*\*(.+?)\*\*/g, '<mark>$1</mark>');
+  const headlineHtml = value => esc(value).replace(/\*\*(.+?)\*\*/, '<span class="gradient-text">$1</span>').replace(/\*\*(.+?)\*\*/g, '<mark>$1</mark>');
+  const slugName = key => ({scikitlearn:'Scikit-learn',dotnet:'.NET',cplusplus:'C/C++',cnn:'CNN',bilstm:'BiLSTM',videomae:'VideoMAE',tensorflowjs:'TensorFlow.js',googlegemini:'Gemini',fastapi:'FastAPI',opencv:'OpenCV',stm32:'STM32',ccna:'Networking (CCNA fundamentals)',fiberoptics:'Fiber Optics',ssfm:'SSFM',photonics:'Photonics',tsl:'Tunisian Sign Language',tts:'Text-to-speech',smtp:'SMTP',reportlab:'ReportLab',dsp:'DSP',uart:'UART',freertos:'FreeRTOS',opticalcommunications:'Optical communications'})[key] || key.replace(/(^|[-_])\w/g, s => s.toUpperCase()).replace(/[-_]/g,' ');
+  const ICONS = {};
+  const set = (keys, srcs = keys) => keys.forEach((key, i) => ICONS[key] = {type:'img',src:`assets/icons/${srcs[i]}.svg`,label:slugName(key)});
+  set(['python','numpy','pandas','jupyter','matlab','tensorflow','pytorch','scikitlearn','keras','html5','css3','dotnet','mysql','postgresql','sqlite','git','github','docker','linux','bash','react','fastapi','redis','wordpress','arduino','opencv','cplusplus'],['python','numpy','pandas','jupyter','matlab','tensorflow','pytorch','scikitlearn','keras','html5','css3','dotnetcore','mysql','postgresql','sqlite','git','github','docker','linux','bash','react','fastapi','redis','wordpress','arduino','opencv','cplusplus']);
+  Object.assign(ICONS, {
+    mediapipe:{type:'mask',src:'assets/icons/si-mediapipe.svg',label:'MediaPipe'}, huggingface:{type:'mask',src:'assets/icons/si-huggingface.svg',label:'Hugging Face'}, ollama:{type:'mask',src:'assets/icons/si-ollama.svg',label:'Ollama'}, llama:{type:'mask',src:'assets/icons/si-meta.svg',label:'LLaMA (Meta)'}, deepseek:{type:'mask',src:'assets/icons/si-deepseek.svg',label:'DeepSeek'}, gemini:{type:'mask',src:'assets/icons/si-googlegemini.svg',label:'Gemma'}, streamlit:{type:'mask',src:'assets/icons/si-streamlit.svg',label:'Streamlit'}, latex:{type:'mask',src:'assets/icons/si-latex.svg',label:'LaTeX'}, groq:{type:'mono',text:'Gq',label:'Groq'}, gemma:{type:'mono',text:'Ge',label:'Gemma'}
+  });
+  ['angular','tensorflowjs','mediapipe','cnn','bilstm','videomae','nodejs','mongodb','cplusplus','stm32','fiberoptics','ccna','freertos','uart','webserial','dsp','opticalcommunications','ssfm','photonics','ai','tsl','tts','smtp','reportlab'].forEach(k => { if(!ICONS[k]) ICONS[k]={type:'mono',text:slugName(k).split(/[\s+.-]/).map(x=>x[0]||'').join('').slice(0,2).toUpperCase()||'•',label:slugName(k)}; });
+  const glyph = key => { const icon=ICONS[key] || {type:'mono',text:'•',label:slugName(key)}; if(icon.type==='img') return `<img src="${icon.src}" alt="" width="32" height="32" loading="lazy" decoding="async">`; if(icon.type==='mask') return `<span class="ico-mask" style="--src:url('${icon.src}')" aria-hidden="true"></span>`; return `<span class="ico-mono" aria-hidden="true">${esc(icon.text)}</span>`; };
+  const stack = keys => `<div class="stack-row" aria-label="Technology stack">${(keys||[]).map(k=>`<span class="stack-icon" title="${esc((ICONS[k]||{}).label||slugName(k))}">${glyph(k)}<span>${esc((ICONS[k]||{}).label||slugName(k))}</span></span>`).join('')}</div>`;
+  const imageButton = (src,alt,gallery,index,cls='') => `<button type="button" class="gallery-thumb ${cls}" data-gallery="${esc(gallery)}" data-index="${index}" aria-label="Open ${esc(alt)} in image viewer"><img src="${esc(src)}" alt="${esc(alt)}" loading="lazy" decoding="async"></button>`;
 
-  function captionFor(path, studentGallery = false) {
-    const filename = path.split("/").pop().replace(/\.[^.]+$/, "");
-    if (/^\d+$/.test(filename)) return studentGallery ? "Student Branch moments" : "Design project";
-    const fixed = filename.replace(/[_-]+/g, " ").replace(/tehnical/gi, "technical").replace(/contineous/gi, "continuous");
-    return fixed.replace(/\b\w/g, (letter) => letter.toUpperCase());
+  const galleryMap = {};
+  const projects = data.projects || [];
+  const renderProjects = () => {
+    const root=$('#project-list'); if(!root)return;
+    root.innerHTML=projects.map((p,n)=>{
+      const imgs=p.images||[]; galleryMap[`project-${p.id}`]=imgs.map((src,i)=>({src,caption:`${p.title} — photo ${i+1}`}));
+      const gallery=`project-${p.id}`, shown=imgs.slice(0,3);
+      const photos=shown.map((src,i)=>imageButton(src,`${p.title} project photo ${i+1}`,gallery,i,i===0?'':'')).join('');
+      const more=imgs.length>3?`<button type="button" class="project-more-photos" data-gallery="${gallery}" data-index="3">+${imgs.length-3} photos</button>`:'';
+      const links=Object.entries(p.links||{}).filter(([,url])=>url).map(([kind,url])=>`<a href="${esc(url)}" target="_blank" rel="noreferrer">${kind==='github'?'GitHub':kind==='report'?'Report':'Live demo'} <span aria-hidden="true">↗</span></a>`).join('');
+      return `<article class="project-card reveal" id="project-${esc(p.id)}" style="--card-index:${n}"><div class="project-gallery" data-count="${imgs.length}">${photos}${more}</div><div class="project-copy"><p class="project-context">${esc(p.context)}</p><h3>${esc(p.title)}</h3><p class="project-headline">${headlineHtml(p.headline)}</p><ul class="project-impact" aria-label="Project impact">${(p.impact||[]).slice(0,3).map(x=>`<li>${esc(x)}</li>`).join('')}</ul><h4 class="built-label">What I built</h4><ul class="project-bullets">${(p.bullets||[]).slice(0,4).map(x=>`<li>${marked(x)}</li>`).join('')}</ul>${stack(p.stack)}${links?`<div class="project-links">${links}</div>`:''}</div></article>`;
+    }).join('');
+  };
+  const renderSkills=()=>{const root=$('#skills-grid');if(!root)return;root.innerHTML=(data.skills||[]).map((group,i)=>`<article class="skill-group reveal" style="--card-index:${i}"><h3>${esc(group.category)}</h3><ul class="skill-items">${group.items.map(k=>{const item=ICONS[k]||{label:slugName(k)};return `<li class="skill-item" title="${esc(item.label||slugName(k))}">${glyph(k)}<span>${esc(item.label||slugName(k))}</span></li>`}).join('')}</ul></article>`).join('');};
+  const renderResearch=()=>{const root=$('#research-list');if(!root)return;root.innerHTML=(data.researchExperiences||[]).map((e,i)=>`<article class="experience-card reveal" style="--card-index:${i}"><div class="experience-top"><div class="experience-identity"><div class="experience-monogram" aria-hidden="true">${esc(e.mark||e.organization.slice(0,2))}</div><div><p class="experience-org">${esc(e.organization)}</p><h3>${esc(e.role)}</h3><p class="experience-context">${esc(e.context)}</p></div></div><p class="experience-period">${esc(e.period)}</p></div><p class="what-label">What I did</p><ul>${(e.bullets||[]).slice(0,4).map(b=>`<li>${marked(b)}</li>`).join('')}</ul><p class="experience-outcome"><strong>Outcome:</strong> ${esc(e.outcome)}</p>${stack(e.stack)}${e.projectId?`<a class="experience-link" href="#project-${esc(e.projectId)}">View project <span aria-hidden="true">↗</span></a>`:''}</article>`).join('');};
+  const fileCaption=src=>{let name=decodeURIComponent(src.split('/').pop().replace(/\.[^.]+$/,''));if(/^\d+$/.test(name))return 'Student Branch community event';return name.replace(/[ _-]+/g,' ').replace(/\b\w/g,c=>c.toUpperCase()).replace(/Tehnical/gi,'Technical').replace(/Contineous/gi,'Continuous');};
+  let activeRole=0;
+  const renderCommunity=()=>{
+    const selector=$('#role-selector'),detail=$('#community-detail');if(!selector||!detail)return;
+    const roles=data.volunteering||[];
+    selector.innerHTML=roles.map((v,i)=>`<button class="role-tab" id="role-tab-${esc(v.id)}" type="button" role="tab" aria-selected="${i===activeRole}" aria-controls="community-detail" tabindex="${i===activeRole?0:-1}" data-role-index="${i}"><span class="role-mark">${esc(v.mark||'IEEE')}</span><span><span class="role-tab-title">${esc(v.title)}</span><span class="role-tab-org">${esc(v.organization)} · ${esc(v.period)}</span></span></button>`).join('');
+    const v=roles[activeRole];if(!v)return;
+    const galleryId=`volunteer-${v.id}`, imgs=v.gallery||[];galleryMap[galleryId]=imgs.map(src=>({src,caption:fileCaption(src)}));
+    const award=v.awardImage?`<span class="award-badge">Rising Star Member Award 2025</span>`:'';
+    let galleryHtml='';
+    if(imgs.length===1){galleryHtml=`<button type="button" class="community-still" data-gallery="${galleryId}" data-index="0" aria-label="View ${esc(v.title)} photo"><img src="${esc(imgs[0])}" alt="${esc(fileCaption(imgs[0]))}" loading="lazy" decoding="async"></button>`;}
+    else if(imgs.length>1){galleryHtml=`<div class="community-carousel" data-carousel="${galleryId}" role="region" aria-label="${esc(v.title)} photos"><div class="carousel-track" tabindex="0">${imgs.map((src,i)=>`<figure class="carousel-slide">${imageButton(src,fileCaption(src),galleryId,i)}<figcaption class="carousel-caption">${esc(fileCaption(src))}</figcaption></figure>`).join('')}</div><div class="carousel-controls"><button type="button" class="carousel-arrow" data-dir="-1" aria-label="Previous photo">‹</button><div class="carousel-dots" role="group" aria-label="Choose photo">${imgs.map((_,i)=>`<button class="carousel-dot" type="button" data-dot="${i}" aria-label="Photo ${i+1}" aria-current="${i===0}"></button>`).join('')}</div><button type="button" class="carousel-arrow" data-dir="1" aria-label="Next photo">›</button></div></div>`;}
+    const link=v.link?`<a class="community-link" href="${esc(v.link.url)}" target="_blank" rel="noreferrer">${esc(v.link.label)} ↗</a>`:'';
+    const viewAll=imgs.length>1?`<button type="button" class="view-all-photos" data-gallery="${galleryId}" data-index="0">View all ${imgs.length} photos</button>`:'';
+    detail.setAttribute('aria-labelledby',`role-tab-${v.id}`);
+    detail.innerHTML=`${award}<p class="period">${esc(v.period)}</p><h3>${esc(v.title)}</h3><p class="community-org">${esc(v.organization)}</p><p>${esc(v.description)}</p>${link}${galleryHtml}${viewAll}`;
+    wireCarousel(detail);
+  };
+  const wireCarousel=root=>{const carousel=$('[data-carousel]',root);if(!carousel)return;const track=$('.carousel-track',carousel),dots=$$('.carousel-dot',carousel),slides=$$('.carousel-slide',track);let dragging=false,startX=0,scrollLeft=0;
+    const go=i=>{const index=(i+slides.length)%slides.length;track.scrollTo({left:slides[index].offsetLeft-track.offsetLeft,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});};
+    $$('[data-dir]',carousel).forEach(b=>b.addEventListener('click',()=>{const current=Math.round(track.scrollLeft/(slides[0]?.offsetWidth+10||1));go(current+Number(b.dataset.dir));}));dots.forEach(d=>d.addEventListener('click',()=>go(Number(d.dataset.dot))));
+    let raf=0;track.addEventListener('scroll',()=>{if(raf)return;raf=requestAnimationFrame(()=>{raf=0;const current=Math.max(0,Math.min(dots.length-1,Math.round(track.scrollLeft/(slides[0]?.offsetWidth+10||1))));dots.forEach((d,i)=>d.setAttribute('aria-current',String(i===current)));});},{passive:true});
+    track.addEventListener('keydown',e=>{if(e.key==='ArrowRight'){e.preventDefault();go(Math.round(track.scrollLeft/(slides[0]?.offsetWidth+10||1))+1);}if(e.key==='ArrowLeft'){e.preventDefault();go(Math.round(track.scrollLeft/(slides[0]?.offsetWidth+10||1))-1);}});
+    track.addEventListener('pointerdown',e=>{if(e.pointerType==='mouse'){dragging=true;startX=e.pageX;scrollLeft=track.scrollLeft;track.classList.add('is-dragging');}});window.addEventListener('pointerup',()=>{dragging=false;track.classList.remove('is-dragging');});track.addEventListener('pointermove',e=>{if(dragging)track.scrollLeft=scrollLeft-(e.pageX-startX);});
+  };
+  const renderDesigns=()=>{const root=$('#design-grid');if(!root)return;const items=data.designs||[];const gallery='designs';galleryMap[gallery]=items.map(src=>({src,caption:fileCaption(src)}));const button=$('#show-designs');let expanded=false;const draw=()=>{root.innerHTML=items.slice(0,expanded?items.length:12).map((src,i)=>imageButton(src,`Design project ${i+1}`,gallery,i,'design-thumb')).join('');if(button){button.hidden=items.length<=12;button.textContent=expanded?'Show fewer':'Show all designs';button.setAttribute('aria-expanded',String(expanded));}};button?.addEventListener('click',()=>{expanded=!expanded;draw();});draw();};
+
+  const heroTech=$('#hero-tech');
+  if(heroTech) heroTech.innerHTML=['pytorch','tensorflow','huggingface','python','opencv','docker'].map((k,i)=>`<div class="tech-tile" style="--tile-index:${i}">${glyph(k)}<span>${esc(ICONS[k].label)}</span></div>`).join('');
+  renderProjects();renderSkills();renderResearch();renderCommunity();renderDesigns();
+  const galleries={};$$('[data-gallery]').forEach(el=>{const id=el.dataset.gallery;if(!galleries[id])galleries[id]=galleryMap[id]||[];});
+  const lightbox=$('#lightbox'),lbImg=$('.lightbox-image',lightbox),lbCaption=$('.lightbox-caption span',lightbox),lbCount=$('.lightbox-count',lightbox),lbPrev=$('.lightbox-prev',lightbox),lbNext=$('.lightbox-next',lightbox);let lbPool=[],lbIndex=0,lastFocus=null;
+  const openGallery=(id,index=0,trigger)=>{lbPool=galleryMap[id]||[];if(!lbPool.length)return;lbIndex=Math.max(0,Math.min(lbPool.length-1,index));lastFocus=trigger||document.activeElement;updateLightbox();lightbox.showModal();$('.lightbox-close',lightbox).focus();};
+  const updateLightbox=()=>{const item=lbPool[lbIndex];lbImg.src=item.src;lbImg.alt=item.caption;lbCaption.textContent=item.caption;lbCount.textContent=`${lbIndex+1} / ${lbPool.length}`;lbPrev.disabled=lbPool.length<2;lbNext.disabled=lbPool.length<2;};
+  document.addEventListener('click',e=>{const el=e.target.closest('[data-gallery]');if(el)openGallery(el.dataset.gallery,Number(el.dataset.index),el);});
+  const stepLightbox=d=>{if(lbPool.length<2)return;lbIndex=(lbIndex+d+lbPool.length)%lbPool.length;updateLightbox();};lbPrev.addEventListener('click',()=>stepLightbox(-1));lbNext.addEventListener('click',()=>stepLightbox(1));$('.lightbox-close',lightbox).addEventListener('click',()=>lightbox.close());lightbox.addEventListener('click',e=>{if(e.target===lightbox)lightbox.close();});lightbox.addEventListener('close',()=>lastFocus?.focus?.());document.addEventListener('keydown',e=>{if(!lightbox.open)return;if(e.key==='ArrowLeft'){e.preventDefault();stepLightbox(-1);}if(e.key==='ArrowRight'){e.preventDefault();stepLightbox(1);}});
+  let touchStart=0;lightbox.addEventListener('touchstart',e=>touchStart=e.changedTouches[0].clientX,{passive:true});lightbox.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-touchStart;if(Math.abs(dx)>45)stepLightbox(dx<0?1:-1);},{passive:true});
+
+  const theme=$('#theme-toggle'),root=document.documentElement;let saved;try{saved=localStorage.getItem('portfolio-theme')}catch{};if(saved==='light'||saved==='dark')root.dataset.theme=saved;const syncTheme=()=>{const dark=root.dataset.theme!=='light';theme.setAttribute('aria-label',dark?'Switch to light theme':'Switch to dark theme');theme.innerHTML=`<span aria-hidden="true">${dark?'☼':'☾'}</span>`;const meta=$('meta[name="theme-color"]');meta?.setAttribute('content',dark?'#0F0B1E':'#F8F6FF');};syncTheme();theme.addEventListener('click',()=>{root.dataset.theme=root.dataset.theme==='dark'?'light':'dark';try{localStorage.setItem('portfolio-theme',root.dataset.theme)}catch{}syncTheme();});
+  const tabs=$$('.role-tab');$('#role-selector')?.addEventListener('click',e=>{const tab=e.target.closest('[data-role-index]');if(!tab)return;activeRole=Number(tab.dataset.roleIndex);renderCommunity();$('#role-tab-'+data.volunteering[activeRole].id)?.focus();});$('#role-selector')?.addEventListener('keydown',e=>{if(!['ArrowDown','ArrowUp','Home','End'].includes(e.key))return;e.preventDefault();const count=(data.volunteering||[]).length;activeRole=e.key==='Home'?0:e.key==='End'?count-1:(activeRole+(e.key==='ArrowDown'?1:-1)+count)%count;renderCommunity();$('#role-tab-'+data.volunteering[activeRole].id)?.focus();});
+  const toggle=$('#nav-toggle'),nav=$('#nav-links');toggle.addEventListener('click',()=>{const open=toggle.getAttribute('aria-expanded')!=='true';toggle.setAttribute('aria-expanded',String(open));toggle.setAttribute('aria-label',open?'Close navigation':'Open navigation');nav.classList.toggle('is-open',open);});nav.addEventListener('click',e=>{if(e.target.closest('a')){nav.classList.remove('is-open');toggle.setAttribute('aria-expanded','false');}});
+  const header=$('#site-header'),navLinks=$$('.nav-links a[href^="#"]'),indicator=$('#nav-indicator');let lastY=window.scrollY;const moveIndicator=link=>{if(!link||!indicator)return;const navbox=$('.nav').getBoundingClientRect(),box=link.getBoundingClientRect();indicator.style.left=`${box.left-navbox.left}px`;indicator.style.width=`${box.width}px`;indicator.style.opacity='1';};const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){const link=navLinks.find(a=>a.hash===`#${entry.target.id}`);navLinks.forEach(a=>{a.removeAttribute('aria-current');});if(link){link.setAttribute('aria-current','location');moveIndicator(link);}}});},{rootMargin:'-35% 0px -55% 0px'});navLinks.forEach(a=>{const target=$(a.hash);if(target)observer.observe(target);});window.addEventListener('resize',()=>moveIndicator(navLinks.find(a=>a.hasAttribute('aria-current'))));window.addEventListener('scroll',()=>{const y=window.scrollY;header.classList.toggle('is-hidden',y>lastY&&y>150&&!nav.classList.contains('is-open'));lastY=y;const progress=$('.scroll-progress');progress.style.transform=`scaleX(${y/(document.documentElement.scrollHeight-innerHeight||1)})`;},{passive:true});
+  const revealObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');revealObserver.unobserve(entry.target);}}),{threshold:.12});$$('.reveal').forEach(el=>revealObserver.observe(el));
+  const roleText=$('#role-text');if(roleText&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
+    const roles=['Telecommunications Engineering','AI & Computer Vision','Data Science for Intelligent Communications'];let i=0,timer=0;
+    const rotate=()=>{i=(i+1)%roles.length;roleText.animate([{opacity:1,transform:'translateY(0)'},{opacity:0,transform:'translateY(5px)'}],{duration:180}).onfinish=()=>{roleText.textContent=roles[i];roleText.animate([{opacity:0,transform:'translateY(-5px)'},{opacity:1,transform:'translateY(0)'}],{duration:220});};};
+    const roleObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting&&!document.hidden)timer=timer||setInterval(rotate,3600);else{clearInterval(timer);timer=0;}}),{threshold:.15});roleObserver.observe($('#home'));
+    document.addEventListener('visibilitychange',()=>{if(document.hidden){clearInterval(timer);timer=0;}else if($('#home').getBoundingClientRect().bottom>0&&$('#home').getBoundingClientRect().top<innerHeight)timer=timer||setInterval(rotate,3600);});
   }
-
-  function renderProjects() {
-    const host = document.querySelector("#project-list");
-    host.innerHTML = (data.projects || []).map((project, index) => `
-      <article class="project-card reveal tilt-card">
-        <div class="mosaic project-mosaic" aria-label="${esc(project.title)} project photos">
-          ${(project.images || []).slice(0, 3).map((src, imageIndex) => `<button class="mosaic-item" type="button" data-gallery="project-${index}" data-index="${imageIndex}" aria-label="Open ${esc(project.title)} photo ${imageIndex + 1}"><img src="${esc(src)}" alt="${esc(project.title)}, ${esc(captionFor(src))}" loading="lazy" decoding="async">${imageIndex === 2 && project.images.length > 3 ? `<span class="photo-count">+${project.images.length - 3}</span>` : ""}</button>`).join("")}
-        </div>
-        <div class="project-body"><p class="section-label">${esc(project.eyebrow || "Selected work")}${project.period ? ` &middot; ${esc(project.period)}` : ""}</p><h3>${esc(project.title)}</h3><p class="card-description">${esc(project.description)}</p><div class="chips project-tags">${(project.tags || []).map((tag) => `<span>${esc(tag)}</span>`).join("")}</div><div class="card-links">${(project.links || []).map((link) => `<a class="text-link" href="${esc(link.url)}" target="_blank" rel="noreferrer">${esc(link.label)} &#8599;</a>`).join("")}${(project.notes || []).map((note) => `<span class="link-muted">${esc(note)}</span>`).join("")}</div></div>
-      </article>`).join("");
-  }
-
-  function renderStudentBento(experience, index) {
-    const galleryKey = `experience-${index}`;
-    const tiles = experience.gallery.map((src, photoIndex) => {
-      const caption = captionFor(src, true);
-      return `<button class="bento-tile reveal ${photoIndex >= 8 ? "tile-hidden" : ""}" style="--tile-index:${photoIndex}" type="button" data-gallery="${galleryKey}" data-index="${photoIndex}" aria-label="View ${esc(caption)} photo">${photoIndex === 0 ? `<img src="${esc(src)}" alt="IEEE Tunisia Rising Star Member Award 2025" loading="lazy" decoding="async"><span class="award-badge">Rising Star Member Award 2025</span>` : `<img src="${esc(src)}" alt="${esc(caption)}" loading="lazy" decoding="async">`}<span class="bento-caption">${esc(caption)}</span></button>`;
-    }).join("");
-    return `<article class="bento-card reveal"><div class="bento-top"><div><p class="section-label">${esc(experience.period)}</p><h3>${esc(experience.title)}</h3><p class="org-name">${esc(experience.organization)}</p><p class="card-description">${esc(experience.description)}</p></div><div class="bento-stats"><span><strong>300+</strong> members</span><span><strong>2025</strong></span><span><strong>IEEE ENIT</strong></span></div></div><div class="bento-grid" data-bento-grid="${galleryKey}">${tiles}</div><button class="button button-outline bento-toggle" type="button" data-bento-toggle="${galleryKey}" aria-expanded="false">View all ${experience.gallery.length} moments</button></article>`;
-  }
-
-  function renderExperiences() {
-    const host = document.querySelector("#experience-list");
-    host.innerHTML = (data.experiences || []).map((experience, index) => {
-      if (experience.featuredGallery) return renderStudentBento(experience, index);
-      const key = `experience-${index}`;
-      const images = (experience.gallery || []).slice(0, 3);
-      return `<article class="experience-card reveal tilt-card"><div class="mosaic experience-mosaic" aria-label="${esc(experience.title)} photos">${images.map((src, imageIndex) => `<button class="mosaic-item" type="button" data-gallery="${key}" data-index="${imageIndex}" aria-label="Open ${esc(captionFor(src))}"><img src="${esc(src)}" alt="${esc(captionFor(src))}" loading="lazy" decoding="async"></button>`).join("")}</div><div class="experience-body"><p class="section-label">${esc(experience.period)}</p><h3>${esc(experience.title)}</h3><p class="org-name">${esc(experience.organization)}</p><p class="card-description">${esc(experience.description)}</p><div class="experience-action"><button class="text-link" type="button" data-gallery="${key}" data-index="0">View photos &#8599;</button>${experience.link ? `<a class="text-link" href="${esc(experience.link.url)}" target="_blank" rel="noreferrer">${esc(experience.link.label)} &#8599;</a>` : ""}</div></div></article>`;
-    }).join("");
-  }
-
-  function renderDesigns() {
-    const host = document.querySelector("#design-grid");
-    const designs = data.designs || [];
-    host.innerHTML = designs.map((src, index) => `<button class="design-card reveal" style="--tile-index:${index}" type="button" data-gallery="designs" data-index="${index}" aria-label="View ${esc(captionFor(src))}"><img src="${esc(src)}" alt="${esc(captionFor(src))}" loading="lazy" decoding="async"><span class="design-view">View</span></button>`).join("");
-    const cards = [...host.children];
-    if (cards.length > 4) {
-      cards.slice(4).forEach((card) => card.hidden = true);
-      const button = document.querySelector("#show-designs");
-      button.hidden = false;
-      button.textContent = "Show more designs";
-      button.setAttribute("aria-expanded", "false");
-      button.addEventListener("click", () => {
-        const expanded = button.getAttribute("aria-expanded") !== "true";
-        cards.slice(4).forEach((card) => card.hidden = !expanded);
-        button.setAttribute("aria-expanded", String(expanded));
-        button.textContent = expanded ? "Show fewer designs" : "Show more designs";
-      });
-    }
-  }
-
-
-  function renderLanguages() {
-    const host = document.querySelector("#language-list");
-    host.innerHTML = (data.languages || []).map((language) => `<span class="language-item"><span>${esc(language.name)}</span><strong>${esc(language.level)}</strong></span>`).join("");
-  }
-
-  function renderCertificates() {
-    const host = document.querySelector("#certificate-list");
-    const certificates = data.certificates || [];
-    if (!certificates.length) {
-      host.innerHTML = `<article class="certificate-placeholder"><span class="certificate-icon" aria-hidden="true">&#10022;</span><p class="section-label">Coming soon</p><h3>Certificates will be added here.</h3><p>Add certificate records to <code>data.js</code> when ready.</p></article>`;
-      return;
-    }
-    host.innerHTML = certificates.map((item) => `<article class="certificate-card glass-card reveal">${item.image ? `<img src="${esc(item.image)}" alt="${esc(item.title)} certificate" loading="lazy">` : ""}<p class="section-label">${esc(item.issuer)}</p><h3>${esc(item.title)}</h3><p>${esc(item.date || "")}</p>${item.url ? `<a class="text-link" href="${esc(item.url)}" target="_blank" rel="noreferrer">View credential &#8599;</a>` : ""}</article>`).join("");
-  }
-
-  function galleryLibrary() {
-    const library = {};
-    (data.projects || []).forEach((item, index) => library[`project-${index}`] = { title: item.title, images: item.images || [] });
-    (data.experiences || []).forEach((item, index) => library[`experience-${index}`] = { title: item.title, images: item.gallery || [], filenameCaptions: item.featuredGallery });
-    library.designs = { title: "Design projects", images: data.designs || [], filenameCaptions: true };
-    library["ieee-enit"] = { title: "IEEE ENIT Student Branch website", images: ["assets/wp-project-ieee-enit-1.jpg", "assets/wp-project-ieee-enit-2.jpg", "assets/wp-project-ieee-enit-3.jpg"] };
-    library["education-week"] = { title: "IEEE ENIT Education Week website", images: ["assets/ed1.png", "assets/ed2.png", "assets/ed3.png"] };
-    return library;
-  }
-
-  function initLightbox() {
-    const dialog = document.querySelector("#lightbox");
-    const photo = dialog.querySelector(".lightbox-image");
-    const caption = dialog.querySelector(".lightbox-caption span:first-child");
-    const count = dialog.querySelector(".lightbox-count");
-    const library = galleryLibrary();
-    let current = { images: [], index: 0, title: "", filenameCaptions: false, opener: null };
-    const show = (index) => {
-      if (!current.images.length) return;
-      current.index = (index + current.images.length) % current.images.length;
-      const src = current.images[current.index];
-      photo.src = src;
-      photo.alt = current.filenameCaptions ? captionFor(src, current.title !== "Design projects") : `${current.title}, photo ${current.index + 1} of ${current.images.length}`;
-      caption.textContent = current.filenameCaptions ? captionFor(src, current.title !== "Design projects") : current.title;
-      count.textContent = `${String(current.index + 1).padStart(2, "0")} / ${String(current.images.length).padStart(2, "0")}`;
-      [-1, 1].forEach((offset) => { const preload = new Image(); preload.src = current.images[(current.index + offset + current.images.length) % current.images.length]; });
-      const multiple = current.images.length > 1;
-      dialog.querySelector(".lightbox-prev").hidden = !multiple;
-      dialog.querySelector(".lightbox-next").hidden = !multiple;
-    };
-    const open = (key, index, opener) => {
-      const item = library[key];
-      if (!item || !item.images.length) return;
-      current = { ...item, index, opener };
-      show(index);
-      dialog.showModal();
-    };
-    dialog.querySelector(".lightbox-close").addEventListener("click", () => dialog.close());
-    dialog.querySelector(".lightbox-prev").addEventListener("click", () => show(current.index - 1));
-    dialog.querySelector(".lightbox-next").addEventListener("click", () => show(current.index + 1));
-    dialog.addEventListener("click", (event) => { if (event.target === dialog) dialog.close(); });
-    dialog.addEventListener("close", () => current.opener?.isConnected && current.opener.focus());
-    dialog.addEventListener("keydown", (event) => {
-      if (event.key === "ArrowLeft") { event.preventDefault(); show(current.index - 1); }
-      if (event.key === "ArrowRight") { event.preventDefault(); show(current.index + 1); }
-    });
-    let startX = null;
-    photo.addEventListener("pointerdown", (event) => startX = event.clientX);
-    photo.addEventListener("pointerup", (event) => {
-      if (startX === null || current.images.length < 2) return;
-      const delta = event.clientX - startX;
-      if (Math.abs(delta) > 50) show(current.index + (delta < 0 ? 1 : -1));
-      startX = null;
-    });
-    document.addEventListener("click", (event) => {
-      const trigger = event.target.closest("[data-gallery]");
-      if (trigger) open(trigger.dataset.gallery, Number(trigger.dataset.index || 0), trigger);
-    });
-  }
-
-  function initBento() {
-    document.querySelectorAll("[data-bento-toggle]").forEach((button) => button.addEventListener("click", () => {
-      const grid = document.querySelector(`[data-bento-grid="${button.dataset.bentoToggle}"]`);
-      const expanded = button.getAttribute("aria-expanded") !== "true";
-      grid.classList.toggle("is-expanded", expanded);
-      button.setAttribute("aria-expanded", String(expanded));
-      const experienceIndex = Number(button.dataset.bentoToggle.replace("experience-", ""));
-      button.textContent = expanded ? "Show fewer moments" : `View all ${data.experiences[experienceIndex].gallery.length} moments`;
-      if (expanded) grid.querySelectorAll(".reveal").forEach((tile) => revealObserver?.observe(tile));
-    }));
-  }
-
-  let revealObserver = null;
-  function initReveal() {
-    if (matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window)) {
-      document.querySelectorAll(".reveal").forEach((element) => element.classList.add("is-visible"));
-      return;
-    }
-    revealObserver = new IntersectionObserver((entries, observer) => entries.forEach((entry) => {
-      if (entry.isIntersecting) { entry.target.classList.add("is-visible"); observer.unobserve(entry.target); }
-    }), { threshold: 0.08 });
-    document.querySelectorAll(".reveal").forEach((element) => revealObserver.observe(element));
-    const sectionObserver = new IntersectionObserver((entries) => entries.forEach((entry) => entry.target.classList.toggle("section-in-view", entry.isIntersecting)), { rootMargin: "100px" });
-    document.querySelectorAll("main section").forEach((section) => sectionObserver.observe(section));
-    const heroObserver = new IntersectionObserver((entries) => entries.forEach((entry) => entry.target.classList.toggle("hero-in-view", entry.isIntersecting)), { threshold: 0.05 });
-    heroObserver.observe(document.querySelector("#home"));
-  }
-
-  function initNavigationAndTheme() {
-    const header = document.querySelector("#site-header");
-    const toggle = document.querySelector("#nav-toggle");
-    const nav = document.querySelector("#nav-links");
-    const closeMenu = () => { nav.classList.remove("is-open"); toggle.setAttribute("aria-expanded", "false"); toggle.setAttribute("aria-label", "Open navigation"); };
-    toggle.addEventListener("click", () => {
-      const open = toggle.getAttribute("aria-expanded") !== "true";
-      toggle.setAttribute("aria-expanded", String(open));
-      toggle.setAttribute("aria-label", open ? "Close navigation" : "Open navigation");
-      nav.classList.toggle("is-open", open);
-    });
-    nav.addEventListener("click", (event) => { if (event.target.closest("a[href^='#']")) closeMenu(); });
-    document.addEventListener("keydown", (event) => { if (event.key === "Escape") closeMenu(); });
-    let previousY = 0;
-    let ticking = false;
-    const progress = document.querySelector(".scroll-progress");
-    const updateScroll = () => {
-      const y = window.scrollY;
-      const range = document.documentElement.scrollHeight - window.innerHeight;
-      progress.style.transform = `scaleX(${range > 0 ? y / range : 0})`;
-      if (y < 80 || y < previousY - 4) header.classList.remove("is-hidden");
-      else if (y > previousY + 7 && y > 150) header.classList.add("is-hidden");
-      previousY = y;
-      ticking = false;
-    };
-    window.addEventListener("scroll", () => { if (!ticking) { requestAnimationFrame(updateScroll); ticking = true; } }, { passive: true });
-    const themeToggle = document.querySelector("#theme-toggle");
-    const setTheme = (theme, persist = true) => {
-      document.documentElement.dataset.theme = theme;
-      document.querySelector('meta[name="theme-color"]').content = theme === "dark" ? "#070A14" : "#F6F7FB";
-      themeToggle.setAttribute("aria-label", theme === "dark" ? "Switch to light theme" : "Switch to dark theme");
-      themeToggle.firstElementChild.innerHTML = theme === "dark" ? "&#9788;" : "&#9790;";
-      if (persist) { try { localStorage.setItem("portfolio-theme", theme); } catch { /* Remembering the theme is optional. */ } }
-    };
-    let savedTheme = "dark";
-    try { savedTheme = localStorage.getItem("portfolio-theme") || "dark"; } catch { /* Always default to dark. */ }
-    const previewTheme = new URLSearchParams(location.search).get("theme");
-    if (previewTheme === "dark" || previewTheme === "light") savedTheme = previewTheme;
-    setTheme(savedTheme === "light" ? "light" : "dark", previewTheme !== "dark" && previewTheme !== "light");
-    themeToggle.addEventListener("click", () => setTheme(document.documentElement.dataset.theme === "dark" ? "light" : "dark"));
-
-    const sections = [...document.querySelectorAll("main section[id]")];
-    if ("IntersectionObserver" in window) {
-      const activeObserver = new IntersectionObserver((entries) => entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        document.querySelectorAll(".nav-links a[aria-current]").forEach((link) => link.removeAttribute("aria-current"));
-        document.querySelector(`.nav-links a[href='#${entry.target.id}']`)?.setAttribute("aria-current", "location");
-      }), { rootMargin: "-38% 0px -54% 0px" });
-      sections.forEach((section) => activeObserver.observe(section));
-    }
-  }
-
-  function initParallaxAndTilt() {
-    const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const finePointer = matchMedia("(pointer:fine)").matches;
-    const visuals = [...document.querySelectorAll("[data-depth]")];
-    const mesh = document.querySelector(".ambient-mesh");
-    let mouseX = 0, mouseY = 0, raf = false;
-    const move = (event) => {
-      mouseX = (event.clientX / innerWidth - .5) * 2;
-      mouseY = (event.clientY / innerHeight - .5) * 2;
-      if (!raf) {
-        raf = true;
-        requestAnimationFrame(() => {
-          if (!reduced && finePointer) visuals.forEach((element) => {
-            const depth = Number(element.dataset.depth || 0);
-            element.style.translate = `${-mouseX * depth * 180}px ${-mouseY * depth * 180}px`;
-          });
-          raf = false;
-        });
-      }
-    };
-    if (!reduced && finePointer) window.addEventListener("pointermove", move, { passive: true });
-    if (!reduced && finePointer) document.querySelectorAll(".tilt-card").forEach((card) => {
-      card.addEventListener("pointermove", (event) => {
-        const bounds = card.getBoundingClientRect();
-        const rx = ((event.clientY - bounds.top) / bounds.height - .5) * -7;
-        const ry = ((event.clientX - bounds.left) / bounds.width - .5) * 7;
-        card.style.transform = `perspective(1100px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-4px)`;
-      });
-      card.addEventListener("pointerleave", () => card.style.removeProperty("transform"));
-    });
-    let scrollPending = false;
-    window.addEventListener("scroll", () => {
-      if (reduced || scrollPending) return;
-      scrollPending = true;
-      requestAnimationFrame(() => {
-        const y = Math.min(scrollY, innerHeight * 1.5);
-        mesh.style.setProperty("--mesh-scroll", `${y * -.035}px`);
-        scrollPending = false;
-      });
-    }, { passive: true });
-    document.addEventListener("visibilitychange", () => document.documentElement.classList.toggle("page-hidden", document.hidden));
-  }
-
-  function initMagneticButtons() {
-    if (matchMedia("(pointer:coarse)").matches || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    document.querySelectorAll(".button").forEach((button) => {
-      button.addEventListener("pointermove", (event) => {
-        const rect = button.getBoundingClientRect();
-        button.style.transform = `translate(${(event.clientX - rect.left - rect.width / 2) * .06}px,${(event.clientY - rect.top - rect.height / 2) * .08}px)`;
-      });
-      button.addEventListener("pointerleave", () => button.style.removeProperty("transform"));
-    });
-  }
-
-  function initContact() {
-    document.querySelector("#contact-form").addEventListener("submit", (event) => {
-      event.preventDefault();
-      const fields = new FormData(event.currentTarget);
-      const subject = encodeURIComponent(`Portfolio contact from ${fields.get("name")}`);
-      const body = encodeURIComponent(`${fields.get("message")}\n\nReply to: ${fields.get("email")}`);
-      window.location.href = `mailto:yosser.jabloun@etudiant-enit.utm.tn?subject=${subject}&body=${body}`;
-    });
-  }
-
-  function initCounters() {
-    const counters = document.querySelectorAll("[data-count]");
-    const animate = (element) => {
-      const goal = Number(element.dataset.count);
-      const suffix = element.dataset.suffix || "";
-      if (matchMedia("(prefers-reduced-motion: reduce)").matches) { element.textContent = `${goal}${suffix}`; return; }
-      const start = performance.now();
-      const duration = 950;
-      const frame = (now) => {
-        const progress = Math.min((now - start) / duration, 1);
-        const eased = 1 - Math.pow(1 - progress, 3);
-        element.textContent = `${Math.round(goal * eased)}${suffix}`;
-        if (progress < 1) requestAnimationFrame(frame);
-      };
-      requestAnimationFrame(frame);
-    };
-    if (!("IntersectionObserver" in window)) { counters.forEach(animate); return; }
-    const observer = new IntersectionObserver((entries) => entries.forEach((entry) => {
-      if (entry.isIntersecting) { animate(entry.target); observer.unobserve(entry.target); }
-    }), { threshold: .8 });
-    counters.forEach((counter) => observer.observe(counter));
-  }
-
-  function init() {
-    renderProjects();
-    renderExperiences();
-    renderDesigns();
-    renderLanguages();
-    renderCertificates();
-    initLightbox();
-    initBento();
-    initNavigationAndTheme();
-    initReveal();
-    initCounters();
-    initParallaxAndTilt();
-    initMagneticButtons();
-    initContact();
-    document.querySelector("#year").textContent = new Date().getFullYear();
-  }
-  document.addEventListener("DOMContentLoaded", init, { once: true });
+  const counters=$$('[data-count]');if(matchMedia('(prefers-reduced-motion: reduce)').matches)counters.forEach(el=>el.textContent=`${el.dataset.count}${el.dataset.suffix||''}`);else{const countObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(!entry.isIntersecting)return;const el=entry.target,end=Number(el.dataset.count),suffix=el.dataset.suffix||'',start=performance.now(),duration=900;const tick=now=>{const t=Math.min(1,(now-start)/duration),value=Math.round(end*(1-Math.pow(1-t,3)));el.textContent=`${value}${suffix}`;if(t<1)requestAnimationFrame(tick);};requestAnimationFrame(tick);countObserver.unobserve(el);}),{threshold:.5});counters.forEach(el=>countObserver.observe(el));}
+  const form=$('#contact-form');form?.addEventListener('submit',e=>{e.preventDefault();const fd=new FormData(form);const subject=encodeURIComponent(`Portfolio message from ${fd.get('name')}`);const body=encodeURIComponent(`${fd.get('message')}\n\nFrom: ${fd.get('name')} (${fd.get('email')})`);location.href=`mailto:yosser.jabloun@etudiant-enit.utm.tn?subject=${subject}&body=${body}`;});$('#year').textContent=new Date().getFullYear();
+  const progressLine=$('#experience-progress');const updateExperience=()=>{const section=$('.experience-timeline');if(!section)return;const rect=section.getBoundingClientRect();progressLine.style.height=`${Math.max(0,Math.min(1,(innerHeight*.65-rect.top)/rect.height))*100}%`;};window.addEventListener('scroll',updateExperience,{passive:true});updateExperience();
+  const heroMotion=$('#hero-tech');if(heroMotion){const heroObserver=new IntersectionObserver(entries=>entries.forEach(entry=>heroMotion.classList.toggle('is-active',entry.isIntersecting&&!document.hidden)),{threshold:.1});heroObserver.observe($('#home'));document.addEventListener('visibilitychange',()=>heroMotion.classList.toggle('is-active',!document.hidden&&$('#home').getBoundingClientRect().bottom>0&&$('#home').getBoundingClientRect().top<innerHeight));}
+  document.addEventListener('visibilitychange',()=>$('.ambient-mesh')?.classList.toggle('paused',document.hidden));
+  const fine=matchMedia('(pointer:fine)').matches&&!matchMedia('(prefers-reduced-motion: reduce)').matches;if(fine){
+    $$('.project-card').forEach(card=>card.addEventListener('pointermove',e=>{const r=card.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;card.style.transform=`perspective(1200px) rotateX(${-y*3}deg) rotateY(${x*3}deg) translateY(-2px)`;}));
+    $$('.project-card').forEach(card=>card.addEventListener('pointerleave',()=>card.style.transform=''));const hero=$('#hero-tech');hero?.addEventListener('pointermove',e=>{const r=hero.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;$$('.tech-tile',hero).forEach((tile,i)=>tile.style.setProperty('--mx',`${x*(i%2?12:-12)}px`));hero.style.setProperty('--py',`${y*8}px`);});document.addEventListener('pointermove',e=>{const b=e.target.closest('.button-primary');if(!b)return;const r=b.getBoundingClientRect();b.style.transform=`translate(${(e.clientX-r.left-r.width/2)*.025}px,${(e.clientY-r.top-r.height/2)*.025}px)`;});document.addEventListener('pointerout',e=>{if(e.target.matches('.button-primary'))e.target.style.transform='';});}
 })();

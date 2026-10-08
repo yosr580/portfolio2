@@ -8,7 +8,6 @@ node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-package-lock.json
 yarn.lock
 
 # OS files
@@ -30,3 +29,6 @@ build/
 # Keep assets folder tracked
 !assets/
 !assets/**
+
+# Keep the icon build lockfile for reproducible asset generation.
+!package-lock.json

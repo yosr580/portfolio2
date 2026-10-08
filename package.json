@@ -1,0 +1,25 @@
+{
+  "name": "portfolio2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "data.js",
+  "scripts": {
+    "build:icons": "node scripts/build-icons.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yosr580/portfolio2.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/yosr580/portfolio2/issues"
+  },
+  "homepage": "https://github.com/yosr580/portfolio2#readme",
+  "devDependencies": {
+    "devicon": "^2.17.0",
+    "simple-icons": "^16.34.0"
+  }
+}
