@@ -4,7 +4,7 @@
 - [x] 3 Projects
 - [x] 4 Skills+Education+Languages
 - [x] 5 Experience
-- [ ] 6 Community (compact)
+- [x] 6 Community (compact)
 - [ ] 7 Websites+Design+Contact+Footer
 - [ ] 8 QA+social image
 
@@ -36,3 +36,8 @@
 - Added a sticky editorial intro, verified internship/research counts, four CV-derived glass cards, stack logos, project links, and scroll progress/active-card treatment.
 - Validation passed at 1440px and 390px: four CV entries, two internship / two research counts, all project links, sticky desktop / static mobile layout, no overflow or browser console errors.
 - Screenshots: assets/social/stage5-1440.png and assets/social/stage5-390.png.
+
+## Stage 6
+- Added a compact four-role accordion with the CV-sourced Student Branch details, filename captions, award marker, small filmstrips, and shared lightbox integration.
+- Validation passed at 1440px and 390px: four compact rows, exclusive accordion state, 24 photos loaded, filename caption fixes/award tag, filmstrip arrows and shared lightbox checked; no overflow or console errors.
+- Screenshots: assets/social/stage6-1440.png and assets/social/stage6-390.png.

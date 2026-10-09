@@ -168,8 +168,8 @@ window.portfolioData = {
   ],
   volunteering: [
     {
-      id: "student-branch-chair", title: "Student Branch Chair", organization: "IEEE ENIT Student Branch", period: "2025",
-      description: "Led the IEEE ENIT Student Branch and coordinated its 300+ member community. Received the IEEE Tunisia Rising Star Member Award in 2025.",
+      id: "student-branch-chair", role: "Student Branch Chair", organization: "IEEE ENIT Student Branch", period: "2025",
+      description: "Chaired the IEEE ENIT Student Branch, coordinating a 300+ member community and contributing to IEEE Section and Region-level technical achievements. Recipient of the IEEE Tunisia Rising Star Member Award (2025).",
       mark: "SB", gallery: [
         "assets/volunteering/student branch chair/2025 tunisia rising star award.webp",
         "assets/volunteering/student branch chair/1779720717539.webp",
@@ -187,14 +187,12 @@ window.portfolioData = {
         "assets/volunteering/student branch chair/leadership & tehnical knowledge.webp",
         "assets/volunteering/student branch chair/team.webp",
         "assets/volunteering/student branch chair/teamwork.webp"
-      ],
-      awardImage: "assets/volunteering/student branch chair/2025 tunisia rising star award.webp"
+      ], awardImage: "assets/volunteering/student branch chair/2025 tunisia rising star award.webp"
     },
     {
-      id: "education-activities", title: "Educational Activities Committee Member", organization: "IEEE Tunisia Section", period: "March 2026-Present",
-      description: "Contributed to IEEE Education Week activities and helped build its event website.", mark: "EA",
-      link: { label: "IEEE Education Week website", url: "https://educationweek.ieee.tn/" },
-      gallery: [
+      id: "education-activities", role: "Educational Activities Committee Member", organization: "IEEE Tunisia Section", period: "March 2026 - Present",
+      description: "Member of the IEEE Tunisia Section Educational Activities Committee.", mark: "EA",
+      link: { label: "IEEE Education Week", url: "https://educationweek.ieee.tn/" }, gallery: [
         "assets/volunteering/IEEE Education week in tunisia/20260419_180524.webp",
         "assets/volunteering/IEEE Education week in tunisia/IMG_0706.webp",
         "assets/volunteering/IEEE Education week in tunisia/img6.webp",
@@ -204,13 +202,13 @@ window.portfolioData = {
       ]
     },
     {
-      id: "yp-taskforce", title: "Coordination Committee Chair", organization: "IEEE Young Professionals Tunisia Taskforce", period: "April 2026-Present",
-      description: "Chair of the IEEE Young Professionals Tunisia Taskforce Coordination Committee.", mark: "YP",
+      id: "yp-taskforce", role: "Coordination Committee Chair", organization: "IEEE YP Tunisia Taskforce", period: "Apr 2026 - Present",
+      description: "Chair of the Coordination Committee for the IEEE Young Professionals Tunisia Taskforce.", mark: "YP",
       gallery: ["assets/volunteering/yp taskforce.webp"]
     },
     {
-      id: "pes-communications", title: "Graphic Designer", organization: "IEEE PES Young Professionals Communications & Marketing Committee", period: "Ongoing",
-      description: "Graphic designer on the IEEE PES Young Professionals Communications & Marketing Committee.", mark: "PES",
+      id: "pes-communications", role: "Graphic Designer", organization: "IEEE PES Young Professionals Communications & Marketing Committee", period: "Ongoing",
+      description: "Graphic Designer with the IEEE PES Young Professionals Communications & Marketing Committee.", mark: "PES",
       gallery: ["assets/volunteering/pes yp designer.webp"]
     }
   ],
