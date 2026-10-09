@@ -20,7 +20,7 @@
   <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,500;1,600&family=Sora:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/nav.css">
@@ -29,7 +29,6 @@
   <link rel="stylesheet" href="css/hero.css">
   <link rel="stylesheet" href="css/projects.css">
   <link rel="stylesheet" href="css/skills.css">
-  <link rel="stylesheet" href="css/experience.css">
   <link rel="stylesheet" href="css/community.css">
 </head>
 <body class="boot-active">
@@ -45,10 +44,9 @@
       <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open navigation"><span></span><span></span></button>
       <ul class="nav-links" id="nav-links">
         <li><a href="#about">About</a></li>
-        <li><a href="#projects">Projects</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#education">Education</a></li>
-        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
         <li><a href="#community">Community</a></li>
         <li><a href="#websites">Websites</a></li>
         <li><a href="#design">Design</a></li>
@@ -61,27 +59,23 @@
     </nav>
   </header>
   <main id="main">
-    <section class="hero" id="hero" aria-labelledby="hero-title">
+    <section class="hero sec" id="about" aria-labelledby="hero-title">
       <div class="hero-visual" aria-label="Portrait and areas of work">
         <div class="hero-glow" aria-hidden="true"></div>
         <figure class="hero-portrait-frame">
           <img class="hero-portrait" src="assets/profile%20picture/profile%20picture.png" alt="Portrait of Yosr Jabloun" fetchpriority="high">
         </figure>
         <div class="hero-decorations" aria-hidden="true">
-          <span class="hero-chip hero-chip-enit">ENIT</span>
-          <span class="hero-chip hero-chip-ieee">IEEE</span>
-          <span class="hero-chip hero-chip-talan">AI intern at Talan</span>
           <span class="hero-tile hero-tile-pytorch"><img src="assets/icons/pytorch.svg" alt=""></span>
-          <span class="hero-tile hero-tile-tensorflow"><img src="assets/icons/tensorflow.svg" alt=""></span>
           <span class="hero-tile hero-tile-python"><img src="assets/icons/python.svg" alt=""></span>
-          <span class="hero-tile hero-tile-opencv"><img src="assets/icons/opencv.svg" alt=""></span>
         </div>
       </div>
       <div class="hero-content">
-        <p class="hero-status"><span class="hero-status-dot" aria-hidden="true"></span>Open to a 6-month AI / Data Science engineering internship</p>
+        <p class="hero-availability"><span class="hero-availability-dot" aria-hidden="true"></span>Open to a 6-month AI / Data Science engineering internship</p>
         <h1 class="hero-title" id="hero-title"><span class="hero-title-word">Yosr</span> <span class="hero-title-word gradient-text">Jabloun</span></h1>
-        <p class="hero-role" aria-live="off"><span id="hero-role">AI &amp; Computer Vision</span><span class="hero-caret" aria-hidden="true"></span></p>
-        <p class="hero-summary">Telecommunications Engineering student at ENIT, specializing in Data Science for Intelligent Communications. My work spans AI, computer vision, and intelligent systems.</p>
+        <p class="hero-idiom">From signal to insight.</p>
+        <p class="hero-summary">I'm a telecommunications engineering student at the National Engineering School of Tunis (ENIT), specializing in Data Science for Intelligent Communications, and I'm pursuing a Master of Research in Information Processing and Complexity of the Living. My work spans AI and machine learning, computer vision, optical communications and intelligent systems.</p>
+        <p class="hero-summary hero-summary-muted">I ranked 144th among 950+ candidates in the national engineering school entrance exam. In 2025, I chaired the IEEE ENIT Student Branch, a community of 300+ members, and received the IEEE Tunisia Rising Star Member Award. With my team, I placed second at the IEEE Region 8 Humanitarian Technologies Competition. Through research and applied projects, I've studied world models and JEPA, built a real-time face anti-spoofing system and developed a Tunisian Arabic lip-reading corpus.</p>
         <div class="hero-actions">
           <a class="button button-primary" href="#projects">View projects</a>
           <a class="button button-outline" href="assets/cv.pdf" download="Yosser-Jabloun-CV.pdf">Download CV</a>
@@ -100,87 +94,53 @@
         </div>
       </div>
     </section>
-    <section class="section about-section" id="about" aria-labelledby="about-title">
-      <div class="container about-layout">
-        <div class="about-copy" data-reveal>
-          <p class="section-kicker">About</p>
-          <h2 class="section-title" id="about-title">What shapes <span class="gradient-text">my work.</span></h2>
-          <p class="section-intro">I am a telecommunications engineering student at the National Engineering School of Tunis (ENIT), specializing in Data Science for Intelligent Communications. I am also pursuing a Master of Research in Information Processing and Complexity of the Living. My work spans AI and machine learning, computer vision, optical communications, and intelligent systems. Through research and internships, I have studied world models and JEPA, built a real-time face anti-spoofing system, and developed a Tunisian Arabic lip-reading corpus. I also contribute to IEEE communities in Tunisia.</p>
-        </div>
-        <div class="about-stat-grid" id="about-stats" aria-label="Selected facts">
-          <article class="about-stat glass-card">
-            <strong class="about-stat-number" data-count="144">144</strong>
-            <span class="about-stat-label">National entrance exam rank, among 950+ candidates</span>
-          </article>
-          <article class="about-stat glass-card">
-            <strong class="about-stat-number" data-count="300" data-suffix="+">300+</strong>
-            <span class="about-stat-label">Members in the IEEE ENIT Student Branch community</span>
-          </article>
-          <article class="about-stat glass-card">
-            <strong class="about-stat-number" data-count="2" data-suffix="nd">2nd</strong>
-            <span class="about-stat-label">IEEE Region 8 Humanitarian Technologies Competition place</span>
-          </article>
-          <article class="about-stat glass-card">
-            <strong class="about-stat-number" data-count="2025">2025</strong>
-            <span class="about-stat-label">IEEE Tunisia Rising Star Member Award</span>
-          </article>
-        </div>
-      </div>
-    </section>
-    <section class="section" id="projects" aria-labelledby="projects-title">
-      <div class="container section-head" data-reveal>
-        <p class="section-kicker">Projects</p>
-        <h2 class="section-title" id="projects-title">Research, meet <span class="gradient-text">real-world use.</span></h2>
-        <p class="section-intro">Selected work shaped by experiments, engineering, and iteration.</p>
-      </div>
-    </section>
-    <section class="section" id="skills" aria-labelledby="skills-title">
-      <div class="container section-head" data-reveal>
-        <p class="section-kicker">Skills</p>
-        <h2 class="section-title" id="skills-title">Tools that help me <span class="gradient-text">make sense.</span></h2>
+    <section class="section sec" id="skills" aria-labelledby="skills-title">
+      <div class="container section-head sec-head" data-reveal>
+        <span class="pill">Skills</span>
+        <h2 class="section-title" id="skills-title">Tools that help me make sense.</h2>
         <p class="section-intro">A concise view of the methods and tools I work with.</p>
       </div>
     </section>
-    <section class="section" id="education" aria-labelledby="education-title">
-      <div class="container section-head" data-reveal>
-        <p class="section-kicker">Education</p>
-        <h2 class="section-title" id="education-title">The foundations <span class="gradient-text">I am building.</span></h2>
+    <section class="section sec" id="education" aria-labelledby="education-title">
+      <div class="container section-head sec-head" data-reveal>
+        <span class="pill">Education</span>
+        <h2 class="section-title" id="education-title">The foundations I am building.</h2>
         <p class="section-intro">Studies that shape how I approach engineering and research.</p>
       </div>
     </section>
-    <section class="section" id="experience" aria-labelledby="experience-title">
-      <div class="container section-head" data-reveal>
-        <p class="section-kicker">Experience</p>
-        <h2 class="section-title" id="experience-title">Internships and research, <span class="gradient-text">side by side.</span></h2>
-        <p class="section-intro">Experience across AI, computer vision, and research, from model studies to tools tested in practice.</p>
+    <section class="section sec" id="projects" aria-labelledby="projects-title">
+      <div class="container section-head sec-head" data-reveal>
+        <span class="pill">Projects</span>
+        <h2 class="section-title" id="projects-title">Research, meet real-world use.</h2>
+        <p class="section-intro">Selected work shaped by experiments, engineering, and iteration.</p>
       </div>
     </section>
-    <section class="section" id="community" aria-labelledby="community-title">
-      <div class="container section-head" data-reveal>
-        <p class="section-kicker">Community</p>
-        <h2 class="section-title" id="community-title">Good work happens <span class="gradient-text">together.</span></h2>
+    <section class="section sec" id="community" aria-labelledby="community-title">
+      <div class="container section-head sec-head" data-reveal>
+        <span class="pill">Community</span>
+        <h2 class="section-title" id="community-title">Good work happens together.</h2>
         <p class="section-intro">People and shared effort make technical work matter.</p>
       </div>
     </section>
-    <section class="section" id="websites" aria-labelledby="websites-title">
-      <div class="container section-head" data-reveal>
-        <p class="section-kicker">Websites</p>
-        <h2 class="section-title" id="websites-title">Sites made <span class="gradient-text">for people.</span></h2>
-        <p class="section-intro">A few web experiences made for communities and their audiences.</p>
+    <section class="section sec" id="websites" aria-labelledby="websites-title">
+      <div class="container section-head sec-head" data-reveal>
+        <span class="pill">Websites</span>
+        <h2 class="section-title" id="websites-title">Sites made for people.</h2>
+        <p class="section-intro">A few websites made for communities and their audiences.</p>
       </div>
     </section>
-    <section class="section" id="design" aria-labelledby="design-title">
-      <div class="container section-head" data-reveal>
-        <p class="section-kicker">Design</p>
-        <h2 class="section-title" id="design-title">Visual ideas, <span class="gradient-text">made tangible.</span></h2>
+    <section class="section sec" id="design" aria-labelledby="design-title">
+      <div class="container section-head sec-head" data-reveal>
+        <span class="pill">Design</span>
+        <h2 class="section-title" id="design-title">Design work</h2>
         <p class="section-intro">A small selection of visual experiments and communication.</p>
       </div>
     </section>
-    <section class="section" id="contact" aria-labelledby="contact-title">
-      <div class="container section-head" data-reveal>
-        <p class="section-kicker">Contact</p>
-        <h2 class="section-title" id="contact-title">Let us start <span class="gradient-text">a conversation.</span></h2>
-        <p class="section-intro">Have a project or idea in mind? I would be glad to hear from you.</p>
+    <section class="section sec" id="contact" aria-labelledby="contact-title">
+      <div class="container section-head sec-head" data-reveal>
+        <span class="pill">Get in touch</span>
+        <h2 class="section-title" id="contact-title">Contact me</h2>
+        <p class="section-intro">Have an opportunity, a project or a question? Send me a message.</p>
       </div>
     </section>
   </main>

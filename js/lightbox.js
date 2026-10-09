@@ -43,12 +43,12 @@ export function initLightbox() {
       <img class="lightbox-image" alt="">
     </figure>
     <button class="lightbox-next" type="button" aria-label="Next photo">→</button>
-    <div class="lightbox-footer"><p class="lightbox-caption"></p><p class="lightbox-counter" aria-live="polite"></p></div>`;
+    <div class="lightbox-footer"><p class="lightbox-caption"></p><p class="lightbox-index" aria-live="polite"></p></div>`;
   document.body.append(dialog);
 
   imageElement = dialog.querySelector(".lightbox-image");
   captionElement = dialog.querySelector(".lightbox-caption");
-  counterElement = dialog.querySelector(".lightbox-counter");
+  counterElement = dialog.querySelector(".lightbox-index");
   previousButton = dialog.querySelector(".lightbox-previous");
   nextButton = dialog.querySelector(".lightbox-next");
 

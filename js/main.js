@@ -6,7 +6,6 @@ import { initHero } from "./hero.js";
 import { renderProjects } from "./render.js";
 import { initProjects } from "./projects.js";
 import { initSkills } from "./skills.js";
-import { initExperience } from "./experience.js";
 import { initCommunity } from "./community.js";
 import { initMiscSections } from "./misc-render.js";
 
@@ -46,7 +45,6 @@ initNavigation();
 runBoot().then(() => {
   initSkills();
   renderProjects();
-  initExperience();
   initCommunity();
   initMiscSections();
   initMotion();

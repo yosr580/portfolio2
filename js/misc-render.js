@@ -41,7 +41,6 @@ function renderDesigns(paths) {
   const head = section?.querySelector(".section-head");
   if (!section || !head) return;
   section.classList.add("design-section");
-  section.querySelector(".section-kicker, .section-pill, .pill")?.classList.add("design-kicker-hidden");
   const title = head.querySelector(".section-title");
   if (title) title.textContent = "Design work";
   let grid = section.querySelector(".design-grid");
@@ -68,11 +67,11 @@ function renderContact() {
   const section = document.querySelector("#contact");
   const head = section?.querySelector(".section-head");
   if (!section || !head) return;
-  head.classList.add("contact-head");
+  head.querySelector(".pill")?.replaceChildren("Get in touch");
   const title = head.querySelector(".section-title");
   const intro = head.querySelector(".section-intro");
-  if (title) title.innerHTML = "Let's talk about <span class=\"gradient-text\">your next project.</span>";
-  if (intro) intro.textContent = "For internships, research, or collaboration, leave me a note.";
+  if (title) title.textContent = "Contact me";
+  if (intro) intro.textContent = "Have an opportunity, a project or a question? Send me a message.";
   section.querySelector(".contact-card")?.remove();
   const card = document.createElement("div"); card.className = "contact-card glass-card container"; card.dataset.reveal = "";
   card.innerHTML = `<form class="contact-form"><div class="contact-fields"><label>Name<input name="name" autocomplete="name" required></label><label>Email<input name="email" type="email" autocomplete="email" required></label><label class="contact-message">Message<textarea name="message" rows="4" required></textarea></label></div><button class="button button-primary" type="submit">Send message</button></form><div class="contact-actions"><a class="button button-outline" href="assets/cv.pdf" download>Download CV</a><a class="button button-outline" href="https://www.linkedin.com/in/yosr-jabloun-232421333" target="_blank" rel="noopener noreferrer">LinkedIn</a><a class="button button-outline" href="https://github.com/yosr580" target="_blank" rel="noopener noreferrer">GitHub</a><a class="button button-outline" href="tel:+21629469140">Phone</a><button class="button button-ghost copy-email" type="button">Copy email</button></div>`;

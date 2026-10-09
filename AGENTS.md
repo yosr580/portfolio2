@@ -106,3 +106,8 @@ FORBIDDEN (the reference's signature elements): boot screen with "Loading..." li
 FORBIDDEN WORDS/PHRASES in my copy: "Ideas that", "Work with a pulse", "constellation", "Enter the system", "mission", "capabilit", "journey log", "open channel", "something with signal", "built with intention", "curious human", "field note", "Loading AI Engine", "Loading Cloud Stack", "A record of", "The path stays in motion", "Hover a node", "initiate_conversation", "FATMA". All headings/subtitles/labels are my own words.
 Page order: Hero (with my portrait), About (intro + facts), Projects (the visual star), Skills (logos), Education & Languages (logos), Experience (Internships & Research), Community (compact, deliberately LESS prominent than projects), Websites, Design (small), Contact, Footer. Nav: About, Projects, Skills, Education, Experience, Community, Websites, Design, Contact + theme toggle + CV pill. No Certificates.
 Always-on background: a fixed floating layer (soft drifting violet blobs + small floating shapes) behind all content. Section backgrounds must therefore be transparent or semi-transparent bands, never opaque blocks.
+
+## DIRECTION v3
+Order: top section (hero + about merged, id about), Skills, Education & Languages, Projects, Community (compact), Websites, Design (quiet content), Contact, Footer.
+NO Experience/Internships section anywhere. NO stat/number boxes anywhere: numbers are written inside sentences.
+Every section title (h2) uses ONE shared header style, size and position. Portrait is small (max about 200px wide).

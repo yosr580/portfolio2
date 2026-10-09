@@ -7,6 +7,7 @@
 - [x] 6 Community (compact)
 - [x] 7 Websites+Design+Contact+Footer
 - [ ] 8 QA+social image
+- [x] 9b Structure fix
 - [x] 10 Projects grid + design
 
 ## Stage 1b
@@ -52,3 +53,9 @@
 - Reworked the six existing projects into a compact two-column desktop grid (single column below 1000px), retaining every project record, photo, and link; cards now use three-photo mosaics, capped stack chips, concise headlines, and a shared details dialog with full project content and gallery.
 - Kept project tilt to 3 degrees on desktop; cards use the standard reveal hooks and a 4px hover lift. Replaced the design heading with plain “Design work” and a quiet six-image preview that expands to all 24 designs.
 - Browser DOM check found six project cards, a shared project dialog, and six initial design thumbnails; `git diff --check` passed. Screenshots: assets/social/stage10-1440.png and assets/social/stage10-390.png. The 390px capture also shows existing hero content extending beyond the viewport; that is outside Stage 10 scope. Stage 4 icon mask 404s remain a previously recorded issue.
+
+## Stage 9b
+- Merged the hero and CV-derived introduction into one top section, removed all stat cards/count-up code, and reduced the portrait to the requested small 4:5 layout.
+- Removed the Experience section, module, stylesheet, related links and `researchExperiences` data; reordered nav and sections, and applied a single shared h2 style. Contact now uses the requested plain title and copy.
+- Playwright: all seven h2s measured at left 120px and font 44.8px/700; top positions 95–163px. Correct section order; zero stat/count boxes; at 390px scrollWidth=390, portrait above title, no clipped h2s or page errors. `rg` requested scan returned no matches.
+- Screenshots: assets/social/stage9b-1440.png and assets/social/stage9b-390.png.

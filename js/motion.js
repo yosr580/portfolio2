@@ -15,7 +15,7 @@ export function initMotion() {
         const id = anchor.getAttribute("href");
         if (id.length > 1 && document.querySelector(id)) {
           event.preventDefault();
-          lenis.scrollTo(id, { offset: -80 });
+          lenis.scrollTo(id, { offset: 0 });
         }
       });
     });

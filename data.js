@@ -119,53 +119,6 @@ window.portfolioData = {
       }
     }
   ],
-  researchExperiences: [
-    {
-      id: "talan-internship", period: "06/2026 \u2013 08/2026", organization: "Talan Tunisie", mark: "T",
-      role: "AI Intern", context: "Artificial Intelligence & Intelligent Systems",
-      bullets: [
-        "Studied **world models** and JEPA, assessing I-JEPA and V-JEPA 2 against MAE, BEiT, DINOv2, and CLIP.",
-        "Ran diagnostics on occlusion, blur, embedding structure, and latent prediction.",
-        "Built a research platform with an **interactive encyclopedia**, model advisor, and arXiv research radar."
-      ],
-      outcome: "Platform built with React, FastAPI, PostgreSQL, Redis, and Groq.",
-      stack: ["react", "fastapi", "postgresql", "redis", "groq"], projectId: "talan-platform"
-    },
-    {
-      id: "sfm-internship", period: "07/2025 \u2013 08/2025", organization: "Groupe SFM", mark: "SFM",
-      role: "Computer Vision Intern", context: "Face anti-spoofing and presentation attacks",
-      bullets: [
-        "Researched **presentation attacks** including printed photos, screen replays, videos, and 2D/3D masks.",
-        "Developed a real-time **CNN-based anti-spoofing system** with OpenCV inference and liveness verification.",
-        "Integrated live webcam inference in a GUI with secure login.",
-        "Implemented guided **multi-angle face capture** for enrollment."
-      ],
-      outcome: "Real-time anti-spoofing and guided capture project.",
-      stack: ["python", "tensorflow", "keras", "opencv", "mediapipe"], projectId: "anti-spoofing"
-    },
-    {
-      id: "tunilip-research", period: "10/2025 \u2013 04/2026", organization: "L3S \u00b7 ENIT", mark: "L3S",
-      role: "TUNILip+ Research Project", context: "End-of-year research project",
-      bullets: [
-        "Built and preprocessed a **Tunisian Arabic lip-reading corpus** for healthcare vocabulary.",
-        "Benchmarked CNN-BiLSTM, MobileNetV2, VideoMAE, and a hybrid ensemble.",
-        "Created a browser-based pipeline with real-time mouth detection and **dataset crowdsourcing**."
-      ],
-      outcome: "Lip-reading system with a crowdsourcing workflow for dataset expansion.",
-      stack: ["python", "tensorflowjs", "mediapipe", "keras", "cnn"], projectId: "tunilip"
-    },
-    {
-      id: "fiber-laser-research", period: "10/2024 \u2013 04/2025", organization: "ENIT", mark: "ENIT",
-      role: "Optical Fiber Laser System Simulation", context: "Numerical simulation and nonlinear optics",
-      bullets: [
-        "Simulated a **figure-of-eight fiber laser** for ultrashort pulse generation.",
-        "Applied the **Split-Step Fourier Method** to the nonlinear Schr\u00f6dinger equation with SMF, EDFA, NLF, NOLM, and NALM components.",
-        "Investigated cavity length, gain, and saturation energy effects on **pulse dynamics and stability**."
-      ],
-      outcome: "Simulation of the fiber laser cavity and its pulse dynamics.",
-      stack: ["matlab", "fiberoptics", "ssfm", "photonics"], projectId: "fiber-laser"
-    }
-  ],
   volunteering: [
     {
       id: "student-branch-chair", role: "Student Branch Chair", organization: "IEEE ENIT Student Branch", period: "2025",
