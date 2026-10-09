@@ -6,6 +6,9 @@ window.portfolioData = {
       title: "AI Research Support Platform",
       context: "Talan, Tunisia | June-August 2026",
       headline: "Evaluated JEPA models and built a **research support platform** for AI research.",
+      problem: "The work focused on evaluating JEPA checkpoints and comparing them with established vision-model baselines.",
+      approach: ["Evaluated I-JEPA and V-JEPA 2 checkpoints alongside established vision-model baselines.", "Built an interactive encyclopedia, model advisor, and arXiv research radar."],
+      result: "Delivered a research support platform with model exploration and paper discovery tools.",
       impact: ["2 JEPA checkpoints assessed", "4 baseline models compared", "3 research tools delivered"],
       bullets: [
         "Studied **world models** and the **JEPA architecture**; tested I-JEPA and V-JEPA 2 checkpoints for occlusion, blur, embedding structure, and latent prediction.",
@@ -21,6 +24,9 @@ window.portfolioData = {
       title: "E-LearNIT (The One)",
       context: "IEEE Region 8 Humanitarian Technologies Competition | November 2025-January 2026",
       headline: "An AI-powered platform for **Tunisian Sign Language recognition** and text-to-speech.",
+      problem: "The project focuses on Tunisian Sign Language recognition and text-to-speech.",
+      approach: ["Contributed to real-time Tunisian Sign Language recognition and text-to-speech.", "Helped create a community-validated Tunisian Sign Language dataset."],
+      result: "The project earned second place in the IEEE Region 8 Humanitarian Technologies Competition.",
       impact: ["2nd place", "IEEE Region 8 competition", "Community-validated TSL dataset"],
       bullets: [
         "Contributed to a platform for **real-time Tunisian Sign Language recognition** and text-to-speech.",
@@ -36,6 +42,9 @@ window.portfolioData = {
       title: "TUNILip+",
       context: "Signals & Smart Systems Laboratory (L3S), ENIT | October 2025-April 2026",
       headline: "A browser-based system for **Tunisian Arabic lip reading**, built around a new corpus.",
+      problem: "No Tunisian Arabic lip-reading dataset or benchmark was available for the project.",
+      approach: ["Collected and preprocessed a corpus with 50+ volunteer speakers.", "Benchmarked CNN-BiLSTM, MobileNetV2 transfer learning, VideoMAE fine-tuning, and a hybrid ensemble."],
+      result: "Built a browser-based lip-reading workflow with real-time mouth detection and a crowdsourcing module.",
       impact: ["50+ volunteer speakers", "4 modeling approaches", "Browser-based inference"],
       bullets: [
         "Constructed and preprocessed a **Tunisian Arabic lip-reading corpus**, selecting vocabulary for healthcare applications.",
@@ -54,6 +63,9 @@ window.portfolioData = {
       title: "Anti-Spoofing Module for Facial Recognition",
       context: "Computer Vision Internship, Groupe SFM | July-August 2025",
       headline: "A real-time **face anti-spoofing** workflow for facial recognition and enrollment.",
+      problem: "The internship focused on detecting presentation attacks in facial recognition and enrollment.",
+      approach: ["Researched printed photos, screen replays, videos, and 2D/3D masks.", "Built CNN-based liveness verification and connected it to OpenCV webcam inference."],
+      result: "Integrated the workflow into a live-webcam GUI with secure login and guided face registration.",
       impact: ["CNN-based classifier", "Real-time OpenCV inference", "Guided multi-angle capture"],
       bullets: [
         "Researched presentation attacks including printed photos, screen replays, videos, and 2D/3D masks.",
@@ -73,6 +85,9 @@ window.portfolioData = {
       title: "Intelligent Video Surveillance",
       context: "Team project | Embedded systems and computer vision",
       headline: "A camera-based system for **unknown-face alerts** and attendance reporting.",
+      problem: "The project focused on detecting unknown faces and producing attendance reports from camera input.",
+      approach: ["Combined an ArduCam with a Python facial-recognition pipeline.", "Added email alerts with captured images and generated PDF attendance reports."],
+      result: "A prototype connected live capture, alerts, and attendance reporting.",
       impact: ["Live video capture", "Email alerts with images", "PDF attendance report"],
       bullets: [
         "Combined an **ArduCam** with a Python facial-recognition pipeline.",
@@ -88,10 +103,13 @@ window.portfolioData = {
       title: "Figure-of-Eight Fiber Laser Simulation",
       context: "Optical Fiber Laser System Simulation, ENIT | October 2024-April 2025",
       headline: "A numerical study of **ultrashort pulse dynamics** in a figure-of-eight fiber laser.",
+      problem: "The project studied how cavity parameters influence pulse dynamics and laser stability.",
+      approach: ["Modeled laser cavity components and solved the nonlinear Schrödinger equation with SSFM.", "Varied cavity length, gain, and saturation energy to study pulse behavior."],
+      result: "Completed a simulation study of the cavity and its pulse dynamics.",
       impact: ["Nonlinear Schrodinger equation", "Split-Step Fourier Method", "Cavity stability study"],
       bullets: [
         "Simulated a **figure-of-eight fiber laser** for ultrashort pulse generation.",
-        "Solved the nonlinear **Schr?dinger equation** with the **Split-Step Fourier Method (SSFM)** and modeled SMF, EDFA, NLF, NOLM, and NALM components.",
+        "Solved the nonlinear **Schrödinger equation** with the **Split-Step Fourier Method (SSFM)** and modeled SMF, EDFA, NLF, NOLM, and NALM components.",
         "Studied how **cavity length**, gain, and saturation energy affect pulse dynamics and stability."
       ],
       stack: ["matlab", "fiberoptics", "ssfm", "photonics"],
@@ -143,7 +161,7 @@ window.portfolioData = {
       role: "Optical Fiber Laser System Simulation", context: "Numerical simulation and nonlinear optics",
       bullets: [
         "Simulated a **figure-of-eight fiber laser** for ultrashort pulse generation.",
-        "Applied the **Split-Step Fourier Method** to the nonlinear Schr?dinger equation with SMF, EDFA, NLF, NOLM, and NALM components.",
+        "Applied the **Split-Step Fourier Method** to the nonlinear Schrödinger equation with SMF, EDFA, NLF, NOLM, and NALM components.",
         "Investigated cavity length, gain, and saturation energy effects on **pulse dynamics and stability**."
       ],
       outcome: "Simulation of the laser cavity and its pulse dynamics.",
@@ -200,13 +218,13 @@ window.portfolioData = {
     }
   ],
   skills: [
-    { category: "LLMs & GenAI tooling", items: ["huggingface", "groq", "ollama", "llama", "gemma", "deepseek"] },
-    { category: "Machine & Deep Learning", items: ["tensorflow", "pytorch", "scikitlearn", "keras", "cnn", "bilstm", "videomae"] },
-    { category: "Python & Data Science", items: ["python", "numpy", "pandas", "jupyter", "matlab"] },
-    { category: "Web & Apps", items: ["html5", "css3", "streamlit", "dotnet", "react", "fastapi", "wordpress", "nodejs", "angular", "tensorflowjs", "mediapipe"] },
-    { category: "Databases", items: ["mysql", "postgresql", "sqlite", "redis", "mongodb"] },
-    { category: "Dev Tools", items: ["git", "github", "docker", "linux", "bash", "latex"] },
-    { category: "Embedded & Telecom", items: ["cplusplus", "arduino", "stm32", "fiberoptics", "ccna", "opencv", "mediapipe", "freertos", "uart", "webserial", "dsp", "opticalcommunications"] }
+    { category: "LLMs & GenAI tooling", description: "Running and evaluating open language models and AI services.", whereUsed: "Talan research platform", items: ["huggingface", "groq", "ollama", "llama", "gemma", "deepseek"] },
+    { category: "Machine & Deep Learning", description: "Training, fine-tuning, and comparing learning models.", whereUsed: "TUNILip+ · Talan · Anti-Spoofing", items: ["tensorflow", "pytorch", "scikitlearn", "keras", "cnn", "bilstm", "videomae"] },
+    { category: "Python & Data Science", description: "Analysis, experimentation, and numerical simulation.", whereUsed: "TUNILip+ · Anti-Spoofing · Fiber Laser", items: ["python", "numpy", "pandas", "jupyter", "matlab"] },
+    { category: "Web & Apps", description: "Building interactive interfaces and application backends.", whereUsed: "Talan platform · IEEE websites", items: ["html5", "css3", "streamlit", "dotnet", "react", "fastapi", "wordpress", "nodejs", "angular", "tensorflowjs", "mediapipe"] },
+    { category: "Databases", description: "Storing and querying application and research data.", whereUsed: "Talan research platform", items: ["mysql", "postgresql", "sqlite", "redis", "mongodb"] },
+    { category: "Dev Tools", description: "Version control, containers, command line, and technical writing.", whereUsed: "Talan platform · Engineering reports", items: ["git", "github", "docker", "linux", "bash", "latex"] },
+    { category: "Embedded & Telecom", description: "Embedded platforms, signal processing, and optical communications.", whereUsed: "Fiber Laser · Video Surveillance", items: ["cplusplus", "arduino", "stm32", "fiberoptics", "ccna", "opencv", "mediapipe", "freertos", "uart", "webserial", "dsp", "opticalcommunications"] }
   ],
   designs: [
     "assets/designs/POSTER TSYP 13 .webp",

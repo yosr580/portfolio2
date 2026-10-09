@@ -69,16 +69,19 @@ def main():
         wait_for_images(fiber_page.locator("body"))
         fiber_page.locator("img").screenshot(path=str(SOCIAL / "site-fiberlaser.jpg"), type="jpeg", quality=91)
         fiber_page.close()
+        hero = page.locator("#home")
+        wait_for_images(hero)
+        hero.screenshot(path=str(SOCIAL / "site-hero.jpg"), type="jpeg", quality=90)
         e_learnit = page.locator("#project-list .project-card").nth(1)
         e_learnit.scroll_into_view_if_needed()
         wait_for_images(e_learnit)
         e_learnit.screenshot(path=str(SOCIAL / "site-the-one.jpg"), type="jpeg", quality=90)
-        skills = page.locator("#skills .skill-group").first
+        skills = page.locator("#skills .skill-story")
         skills.scroll_into_view_if_needed()
         wait_for_images(skills)
         skills.screenshot(path=str(SOCIAL / "site-skills.jpg"), type="jpeg", quality=88)
 
-        card = browser.new_page(viewport={"width": 1080, "height": 1350}, device_scale_factor=1)
+        card = browser.new_page(viewport={"width": 1200, "height": 630}, device_scale_factor=1)
         card.goto(f"http://127.0.0.1:{port}/assets/social/preview-card.html", wait_until="domcontentloaded")
         card.evaluate("document.fonts.ready")
         wait_for_images(card.locator(".card"))
@@ -87,8 +90,8 @@ def main():
         preview_path = SOCIAL / "portfolio-preview.png"
         preview = Image.open(preview_path).convert("RGB")
         preview.save(preview_path, format="PNG", optimize=True, compress_level=9)
-        # Double device pixel ratio keeps the same CSS composition and produces 2160 x 2700.
-        await_dpr_two = browser.new_page(viewport={"width": 1080, "height": 1350}, device_scale_factor=2)
+        # Double device pixel ratio keeps the same CSS composition and produces 2400 x 1260.
+        await_dpr_two = browser.new_page(viewport={"width": 1200, "height": 630}, device_scale_factor=2)
         await_dpr_two.goto(f"http://127.0.0.1:{port}/assets/social/preview-card.html", wait_until="domcontentloaded")
         await_dpr_two.evaluate("document.fonts.ready")
         wait_for_images(await_dpr_two.locator(".card"))
@@ -96,12 +99,12 @@ def main():
         await_dpr_two.screenshot(path=str(temp_2x), type="png")
         temp_2x.replace(SOCIAL / "portfolio-preview@2x.png")
         one_x = Image.open(SOCIAL / "portfolio-preview.png").convert("RGB")
-        one_x.resize((500, 625), Image.Resampling.LANCZOS).save(SOCIAL / "portfolio-preview-500.png", format="PNG", optimize=True)
+        one_x.resize((500, 263), Image.Resampling.LANCZOS).save(SOCIAL / "portfolio-preview-500.png", format="PNG", optimize=True)
         browser.close()
 
-    print("Exported assets/social/portfolio-preview.png (1080x1350)")
-    print("Exported assets/social/portfolio-preview@2x.png (2160x2700)")
-    print("Exported assets/social/portfolio-preview-500.png (500x625)")
+    print("Exported assets/social/portfolio-preview.png (1200x630)")
+    print("Exported assets/social/portfolio-preview@2x.png (2400x1260)")
+    print("Exported assets/social/portfolio-preview-500.png (500x263)")
 
 
 if __name__ == "__main__":

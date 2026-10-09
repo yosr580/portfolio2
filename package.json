@@ -4,7 +4,9 @@
   "description": "",
   "main": "data.js",
   "scripts": {
-    "build:icons": "node scripts/build-icons.js"
+    "build:icons": "node scripts/build-icons.js",
+    "build:vendor": "node scripts/build-vendor.js",
+    "export:preview": "python scripts/export-preview.py"
   },
   "repository": {
     "type": "git",
@@ -20,6 +22,8 @@
   "homepage": "https://github.com/yosr580/portfolio2#readme",
   "devDependencies": {
     "devicon": "^2.17.0",
+    "gsap": "3.12.5",
+    "lenis": "1.1.20",
     "simple-icons": "^16.34.0"
   }
 }

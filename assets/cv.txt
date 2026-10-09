@@ -1,0 +1,66 @@
+YOSSER JABLOUN
+Telecommunications Engineering Student | Data Science for Intelligent Communications
+Tunis, Tunisia · (+216) 29 469 140 · yosser.jabloun@etudiant-enit.utm.tn
+linkedin.com/in/yosr-jabloun-232421333 · github.com/yosr580 · portfolio2-ecru-gamma.vercel.app
+PROFILE
+Telecommunications Engineering student at the National Engineering School of Tunis (ENIT), specializing in Data Science for
+Intelligent Communications, with a research-oriented Master of Research in Information Processing and Complexity of the Living
+(TICV). Experience in AI, machine learning, signal processing, computer vision, optical communications and intelligent systems
+through academic research, internships and technical projects. Currently seeking a 6-month Engineering internship in AI / Data
+Science to apply research and technical skills to real-world data-driven challenges.
+COMPETENCIES
+AI & Machine Learning Python, TensorFlow, Scikit-learn, CNN, BiLSTM, VideoMAE, representation learning, RAG
+Signal Processing Digital signals, optical communications, SSFM, spectral/power analysis, physiological & biological signals
+Computer Vision MediaPipe FaceMesh, OpenCV, facial recognition, anti-spoofing, real-time inference
+Data & Software Pandas, NumPy, FastAPI, React, Node.js, Angular, MongoDB, MySQL, Git, WordPress
+Embedded & Systems STM32, FreeRTOS, UART, Web Serial API, distributed systems, microservices
+PROFESSIONAL EXPERIENCE
+Intern — Artificial Intelligence & Intelligent Systems 06/2026 – 08/2026
+Talan, Tunisia
+• Conducted a structured study of world models and the JEPA architecture, assessing their maturity and limitations, and ran diagnostic experiments on released I-JEPA and V-JEPA 2 checkpoints (robustness to occlusion and blur, embedding structure, masked
+and future latent prediction) against MAE, BEiT, DINOv2 and CLIP.
+• Designed and built a research support platform (React, FastAPI, PostgreSQL, Redis) with an interactive encyclopedia, a model
+advisor, and a research radar that ingests arXiv papers and extracts structured metadata with an LLM (Groq).
+Intern — Computer Vision 07/2025 – 08/2025
+SFM Groupe, Tunisia
+• Research on face anti-spoofing and presentation attacks, covering printed photos, screen replays, videos, and 2D/3D masks.
+• Development of a real-time CNN-based anti-spoofing system from scratch for the company, with OpenCV inference, liveness
+verification, and guided multi-angle face capture.
+Technical & Logistics Team Member — E-learNIT (The One) 11/2025 – 01/2026
+Humanitarian Technologies Competition, IEEE Region 8
+• Contributed to an AI-powered platform for real-time Tunisian Sign Language recognition and text-to-speech, including the creation
+of a community-validated TSL dataset.
+• Supported technical demonstrations, deployment, and project coordination.
+• 2nd Place, IEEE Region 8 Humanitarian Technologies Competition (Europe, Middle East & North Africa).
+PROJECTS
+TuniLIP+ — Signals & Smart Systems Laboratory (L3S), ENIT 10/2025 – 04/2026
+Deep Learning, Computer Vision, Sequence Modeling, Multimodal Learning, Transfer Learning
+• Dataset construction & preprocessing of a Tunisian Arabic lip-reading corpus with vocabulary selection for healthcare applications.
+• Development and benchmarking of CNN-BiLSTM (curriculum learning), MobileNetV2 (transfer learning), VideoMAE (Vision
+Transformer), and a Hybrid Ensemble.
+• Browser-based system with real-time mouth detection, inference pipeline, and crowdsourcing module for dataset expansion.
+Optical Fiber Laser System Simulation — ENIT 10/2024 – 04/2025
+Nonlinear Optics, SSFM (Split-Step Fourier Method), Fiber Optics Components, Numerical Simulation
+• SSFM-based simulation of a figure-eight fiber laser for ultrashort pulse generation using SMF, EDFA, NLF, NOLM, and NALM
+components.
+• Investigation of cavity length, gain, and saturation energy effects on pulse dynamics and laser stability.
+EDUCATION
+Master of Research (ongoing) 09/2026 – 09/2027
+National Engineering School of Tunis (ENIT), Tunisia
+Information Processing and Complexity of the Living (TICV)
+Engineering Cycle (ongoing) 09/2024 – 06/2027
+National Engineering School of Tunis (ENIT), Tunisia
+Telecommunications Engineering specializing in Data Science for Intelligent Communications
+Pre-Engineering Studies (Physics & Chemistry) 09/2022 – 05/2024
+Preparatory Institute for Engineering Studies, Nabeul, Tunisia
+Ranked 144 among 950+ candidates in the National Engineering School Entrance Examination
+Natural Sciences Baccalaureate (High Honors) 06/2022
+Mahmoud Messadi High School, Nabeul, Tunisia
+LEADERSHIP ACTIVITIES
+• Chair, IEEE ENIT Student Branch (2025); coordinated a 300+ member community and contributed to IEEE Section/Region-level
+technical achievements.
+• IEEE Tunisia Section Educational Activities Committee member; IEEE Young Professionals Tunisia Taskforce Coordination Committee Chair; IEEE PES Young Professionals Communications & Marketing Committee Graphic Designer (ongoing).
+• Recipient of the IEEE Tunisia Rising Star Member Award (2025).
+CERTIFICATIONS & LANGUAGES
+Certifications CCNA: Introduction to Networks (Cisco) · Efficient Large Language Model Customization (NVIDIA)
+Languages English (B2) · French (B2) · German (A2
