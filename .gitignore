@@ -32,3 +32,4 @@ build/
 
 # Keep the icon build lockfile for reproducible asset generation.
 !package-lock.json
+_old/

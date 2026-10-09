@@ -1,11 +1,16 @@
-﻿# Audit status
-- Stage 1 — Exists: theme toggle, navigation, boot and motion in root files; Missing: planned css/ and js/ modules; Broken: none confirmed.
-- Stage 2 — Exists: hero section and avatar; Missing: stage 2 implementation checkpoint; Broken: none confirmed.
-- Stage 3 — Exists: project cards, expandable details and image lightbox; Missing: stage checkpoint; Broken: none confirmed.
-- Stage 4 — Exists: skill groups, logos and language labels; Missing: stage checkpoint; Broken: site says German B1, while assets/cv.txt says A2.
-- Stage 5 — Exists: experience timeline; Missing: stage checkpoint; Broken: 1440px full-page capture shows the timeline taking a disproportionate amount of page height.
-- Stage 6 — Exists: community role selector and ring carousel; Missing: stage checkpoint; Broken: none confirmed.
-- Stage 7 — Exists: Websites, Design, Contact and Footer sections; Missing: stage checkpoint; Broken: none confirmed.
-- Stage 8 — Exists: social preview assets and one 1440px audit capture; Missing: final QA; Broken: none confirmed.
-- AGENTS.md: not found. docs/cv.txt: missing; assets/cv.txt exists.
-- Screenshot: assets/social/site-audit-1440.png (1440px wide, full page, dark mode).
+﻿# Portfolio Progress
+- [x] 0 Audit + checkpoint
+- [x] 1 Foundation (tokens, theme, nav, boot, motion)
+- [ ] 2 Hero
+- [ ] 3 Projects (+ lightbox)
+- [ ] 4 Skills
+- [ ] 5 Internships & Research
+- [ ] 6 Community ring carousel
+- [ ] 7 Websites, Design, Contact, Footer
+- [ ] 8 Social images + final QA
+
+## Stage 1 verification
+- Confirmed docs/cv.txt exists; assets/vendor contains the pinned GSAP 3.12.5, ScrollTrigger, and Lenis 1.1.20 bundles.
+- Moved the legacy stylesheet and script into ignored _old/; kept data.js and assets.
+- Added the static section shell, design tokens, base and navigation styles, theme, boot, motion, and main modules.
+- Checks: theme persistence, scroll-direction navigation, boot skip, browser console, and 390px horizontal overflow.
