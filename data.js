@@ -40,7 +40,7 @@ window.portfolioData = {
     {
       id: "tunilip",
       title: "TUNILip+",
-      context: "Signals & Smart Systems Laboratory (L3S), ENIT | October 2025-April 2026",
+      context: "L3S, ENIT | October 2025-April 2026",
       headline: "A browser-based system for **Tunisian Arabic lip reading**, built around a new corpus.",
       problem: "No Tunisian Arabic lip-reading dataset or benchmark was available for the project.",
       approach: ["Collected and preprocessed a corpus with 50+ volunteer speakers.", "Benchmarked CNN-BiLSTM, MobileNetV2 transfer learning, VideoMAE fine-tuning, and a hybrid ensemble."],
@@ -145,7 +145,7 @@ window.portfolioData = {
       projectId: "anti-spoofing"
     },
     {
-      id: "tunilip-research", period: "October 2025-April 2026", organization: "Signals & Smart Systems Laboratory (L3S), ENIT", mark: "L3S",
+      id: "tunilip-research", period: "October 2025-April 2026", organization: "L3S, ENIT", mark: "L3S",
       role: "TUNILip+ Research Project", context: "End-of-year project in sequence modeling and computer vision",
       bullets: [
         "Built and preprocessed a **Tunisian Arabic lip-reading corpus** for healthcare vocabulary.",
@@ -224,7 +224,7 @@ window.portfolioData = {
     { category: "Web & Apps", description: "Building interactive interfaces and application backends.", whereUsed: "Talan platform · IEEE websites", items: ["html5", "css3", "streamlit", "dotnet", "react", "fastapi", "wordpress", "nodejs", "angular", "tensorflowjs", "mediapipe"] },
     { category: "Databases", description: "Storing and querying application and research data.", whereUsed: "Talan research platform", items: ["mysql", "postgresql", "sqlite", "redis", "mongodb"] },
     { category: "Dev Tools", description: "Version control, containers, command line, and technical writing.", whereUsed: "Talan platform · Engineering reports", items: ["git", "github", "docker", "linux", "bash", "latex"] },
-    { category: "Embedded & Telecom", description: "Embedded platforms, signal processing, and optical communications.", whereUsed: "Fiber Laser · Video Surveillance", items: ["cplusplus", "arduino", "stm32", "fiberoptics", "ccna", "opencv", "mediapipe", "freertos", "uart", "webserial", "dsp", "opticalcommunications"] }
+    { category: "Embedded & Telecom", description: "Embedded platforms, digital and optical systems.", whereUsed: "Fiber Laser · Video Surveillance", items: ["cplusplus", "arduino", "stm32", "fiberoptics", "ccna", "opencv", "mediapipe", "freertos", "uart", "webserial", "dsp", "opticalcommunications"] }
   ],
   designs: [
     "assets/designs/POSTER TSYP 13 .webp",

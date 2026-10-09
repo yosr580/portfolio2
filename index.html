@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en" data-theme="dark">
 <head>
   <meta charset="utf-8">
@@ -20,37 +20,29 @@
   <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,500;1,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/nav.css">
+  <link rel="stylesheet" href="css/misc.css">
+  <link rel="stylesheet" href="css/floaters.css">
 </head>
 <body class="boot-active">
+  <div class="bg-fx" aria-hidden="true"></div>
   <a class="skip-link" href="#main">Skip to content</a>
-  <div class="boot" id="boot" role="status" aria-label="Portfolio startup sequence">
-    <div class="boot-inner">
-      <p class="boot-brand mono-label">YOSR JABLOUN / STARTUP</p>
-      <ol class="boot-lines" aria-live="polite">
-        <li data-boot-line>01 Loading Deep Learning...</li>
-        <li data-boot-line>02 Loading Computer Vision...</li>
-        <li data-boot-line>03 Loading Telecom Stack...</li>
-        <li data-boot-line>04 Loading Community...</li>
-        <li data-boot-line>05 Boot complete.</li>
-      </ol>
-      <div class="boot-track" aria-hidden="true"><span class="boot-progress"></span></div>
-    </div>
+  <div class="boot" id="boot" role="status" aria-label="YJ">
+    <div class="boot-mark" aria-hidden="true">YJ</div>
+    <span class="boot-line" aria-hidden="true"></span>
   </div>
-
   <header class="site-header" id="site-header">
     <nav class="nav container" aria-label="Main navigation">
       <a class="brand" href="#about" aria-label="Yosser Jabloun home">YJ</a>
-      <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open navigation">
-        <span></span><span></span>
-      </button>
+      <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open navigation"><span></span><span></span></button>
       <ul class="nav-links" id="nav-links">
         <li><a href="#about">About</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#skills">Skills</a></li>
+        <li><a href="#education">Education</a></li>
         <li><a href="#experience">Experience</a></li>
         <li><a href="#community">Community</a></li>
         <li><a href="#websites">Websites</a></li>
@@ -58,81 +50,83 @@
         <li><a href="#contact">Contact</a></li>
       </ul>
       <div class="nav-actions">
-        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to light theme" title="Switch theme">
-          <span class="theme-icon" aria-hidden="true">☼</span>
-        </button>
-        <a class="nav-cv mono-label" href="assets/cv.pdf" download="Yosser-Jabloun-CV.pdf">CV</a>
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to light theme" title="Switch theme"><span class="theme-icon" aria-hidden="true">☼</span></button>
+        <a class="nav-cv" href="assets/cv.pdf" download="Yosser-Jabloun-CV.pdf">CV</a>
       </div>
     </nav>
   </header>
-
   <main id="main">
     <section class="section" id="about" aria-labelledby="about-title">
       <div class="container section-head" data-reveal>
-        <p class="section-kicker mono-label">ABOUT</p>
-        <h1 class="section-title" id="about-title">Ideas into <em>useful systems.</em></h1>
-        <p class="section-intro">A little about the questions and work that keep me curious.</p>
+        <p class="section-kicker">About</p>
+        <h1 class="section-title" id="about-title">A little about <span class="gradient-text">me.</span></h1>
+        <p class="section-intro">A short introduction to my studies and the questions I explore.</p>
       </div>
     </section>
     <section class="section" id="projects" aria-labelledby="projects-title">
       <div class="container section-head" data-reveal>
-        <p class="section-kicker mono-label">PROJECTS</p>
-        <h2 class="section-title" id="projects-title">Research into <em>practice.</em></h2>
+        <p class="section-kicker">Projects</p>
+        <h2 class="section-title" id="projects-title">Research, meet <span class="gradient-text">real-world use.</span></h2>
         <p class="section-intro">Selected work shaped by experiments, engineering, and iteration.</p>
       </div>
     </section>
     <section class="section" id="skills" aria-labelledby="skills-title">
       <div class="container section-head" data-reveal>
-        <p class="section-kicker mono-label">SKILLS</p>
-        <h2 class="section-title" id="skills-title">Tools I think <em>with.</em></h2>
-        <p class="section-intro">Methods and technologies I use to explore and build.</p>
+        <p class="section-kicker">Skills</p>
+        <h2 class="section-title" id="skills-title">Tools that help me <span class="gradient-text">make sense.</span></h2>
+        <p class="section-intro">A concise view of the methods and tools I work with.</p>
+      </div>
+    </section>
+    <section class="section" id="education" aria-labelledby="education-title">
+      <div class="container section-head" data-reveal>
+        <p class="section-kicker">Education</p>
+        <h2 class="section-title" id="education-title">The foundations <span class="gradient-text">I am building.</span></h2>
+        <p class="section-intro">Studies that shape how I approach engineering and research.</p>
       </div>
     </section>
     <section class="section" id="experience" aria-labelledby="experience-title">
       <div class="container section-head" data-reveal>
-        <p class="section-kicker mono-label">EXPERIENCE</p>
-        <h2 class="section-title" id="experience-title">Learning by <em>doing.</em></h2>
-        <p class="section-intro">Research, internships, and lessons gathered along the way.</p>
+        <p class="section-kicker">Experience</p>
+        <h2 class="section-title" id="experience-title">Learning meets <span class="gradient-text">practice.</span></h2>
+        <p class="section-intro">Work and research that continue to shape my perspective.</p>
       </div>
     </section>
     <section class="section" id="community" aria-labelledby="community-title">
       <div class="container section-head" data-reveal>
-        <p class="section-kicker mono-label">COMMUNITY</p>
-        <h2 class="section-title" id="community-title">Build things <em>together.</em></h2>
+        <p class="section-kicker">Community</p>
+        <h2 class="section-title" id="community-title">Good work happens <span class="gradient-text">together.</span></h2>
         <p class="section-intro">People and shared effort make technical work matter.</p>
       </div>
     </section>
     <section class="section" id="websites" aria-labelledby="websites-title">
       <div class="container section-head" data-reveal>
-        <p class="section-kicker mono-label">WEBSITES</p>
-        <h2 class="section-title" id="websites-title">Sites made <em>for people.</em></h2>
-        <p class="section-intro">A few web experiences built for communities and their audiences.</p>
+        <p class="section-kicker">Websites</p>
+        <h2 class="section-title" id="websites-title">Sites made <span class="gradient-text">for people.</span></h2>
+        <p class="section-intro">A few web experiences made for communities and their audiences.</p>
       </div>
     </section>
     <section class="section" id="design" aria-labelledby="design-title">
       <div class="container section-head" data-reveal>
-        <p class="section-kicker mono-label">DESIGN</p>
-        <h2 class="section-title" id="design-title">Visual ideas, <em>made tangible.</em></h2>
+        <p class="section-kicker">Design</p>
+        <h2 class="section-title" id="design-title">Visual ideas, <span class="gradient-text">made tangible.</span></h2>
         <p class="section-intro">A small selection of visual experiments and communication.</p>
       </div>
     </section>
     <section class="section" id="contact" aria-labelledby="contact-title">
       <div class="container section-head" data-reveal>
-        <p class="section-kicker mono-label">CONTACT</p>
-        <h2 class="section-title" id="contact-title">Start a <em>conversation.</em></h2>
+        <p class="section-kicker">Contact</p>
+        <h2 class="section-title" id="contact-title">Let us start <span class="gradient-text">a conversation.</span></h2>
         <p class="section-intro">Have a project or idea in mind? I would be glad to hear from you.</p>
       </div>
     </section>
   </main>
-
   <footer class="site-footer">
     <div class="container footer-inner">
       <a class="brand" href="#about" aria-label="Back to top">YJ</a>
-      <p class="mono-label">© Yosser Jabloun</p>
-      <a class="footer-top mono-label" href="#about">Back to top ↑</a>
+      <p>© Yosser Jabloun</p>
+      <a class="footer-top" href="#about">Back to top ↑</a>
     </div>
   </footer>
-
   <script src="assets/vendor/gsap.min.js"></script>
   <script src="assets/vendor/ScrollTrigger.min.js"></script>
   <script src="assets/vendor/lenis.min.js"></script>

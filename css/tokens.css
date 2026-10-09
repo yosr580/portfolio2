@@ -20,6 +20,8 @@
   --contrast-text: #15121f;
   --contrast-muted: #5a5670;
   --contrast-dot: #d6d0ea;
+  --font-body: "Inter", sans-serif;
+  --font-display: "Sora", sans-serif;
 }
 
 :root[data-theme="light"] {

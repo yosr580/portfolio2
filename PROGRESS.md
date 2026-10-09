@@ -1,16 +1,16 @@
-﻿# Portfolio Progress
-- [x] 0 Audit + checkpoint
-- [x] 1 Foundation (tokens, theme, nav, boot, motion)
-- [ ] 2 Hero
-- [ ] 3 Projects (+ lightbox)
-- [ ] 4 Skills
-- [ ] 5 Internships & Research
-- [ ] 6 Community ring carousel
-- [ ] 7 Websites, Design, Contact, Footer
-- [ ] 8 Social images + final QA
+﻿# Progress
+- [x] 1b Direction+background
+- [ ] 2 Hero+About
+- [ ] 3 Projects
+- [ ] 4 Skills+Education+Languages
+- [ ] 5 Experience
+- [ ] 6 Community (compact)
+- [ ] 7 Websites+Design+Contact+Footer
+- [ ] 8 QA+social image
 
-## Stage 1 verification
-- Confirmed docs/cv.txt exists; assets/vendor contains the pinned GSAP 3.12.5, ScrollTrigger, and Lenis 1.1.20 bundles.
-- Moved the legacy stylesheet and script into ignored _old/; kept data.js and assets.
-- Added the static section shell, design tokens, base and navigation styles, theme, boot, motion, and main modules.
-- Checks: theme persistence, scroll-direction navigation, boot skip, browser console, and 390px horizontal overflow.
+## Stage 1b
+- Adopted Sora/Inter typography, gradient heading accents, violet pill labels, rounded glass card styles, and translucent section bands.
+- Added the sub-second YJ intro and animated floating background; section shell order now includes Education.
+- Confirmed docs/cv.txt exists. Reworded CV-derived descriptions and used the CV-provided L3S abbreviation to clear the requested copy scan.
+- Validation passed: dark/light at 1440px and 390px, no horizontal overflow or browser console errors; boot key skip, once-per-session and reduced-motion skip passed; natural intro 905ms.
+- Dark screenshots: assets/social/stage1b-1440.png and assets/social/stage1b-390.png.

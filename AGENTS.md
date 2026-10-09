@@ -96,3 +96,13 @@ Skills to show with logos: Hugging Face, Groq, Ollama, LLaMA, Gemma, DeepSeek, T
 
 Copy anything from the reference repo (GPL, personal content). Add mono numbered labels beyond the kickers above. Use !important hacks. Leave horizontal scroll at 360-1920px. Hotlink icons.
 
+
+## DIRECTION v2 (overrides earlier rules)
+Goal: black + violet, premium, and clearly DIFFERENT from the reference portfolio. Keep only: dark base with violet glow, Lenis + GSAP entrance choreography (y 30 -> 0, .7s power2.out, ScrollTrigger start "top 84%", once), photo mosaics in project cards, expandable project details, card tilt on hover.
+Palette: keep tokens.css. REMOVE the light "contrast" skills section idea; every section stays dark (light theme still available via toggle).
+Typography: headings Sora 600/700, letter-spacing -.035em (never below -.04em), line-height 1.05; body Inter 16px/1.7. Section labels are small violet PILL badges (Inter 600 12px), NO numbering ("01 /"), NO uppercase mono micro-labels. Emphasis words in headings use a violet gradient text (linear-gradient(120deg,#c9b8ff,#8b6cff), background-clip:text), NOT serif italic. Remove Playfair Display and DM Mono imports. JetBrains Mono allowed only for tiny date chips.
+Shapes: rounded glass cards (radius 18px, background rgba(255,255,255,.04), 1px border var(--line), backdrop-filter blur(10px), soft violet shadow). Buttons fully rounded.
+FORBIDDEN (the reference's signature elements): boot screen with "Loading..." lines, orbit hero, node-button skills map, polaroids, 3D rotating ring carousel, terminal-style contact, achievement toasts, "repository index", scroll-to-explore cue, serif italic accent, sharp square cards, mono numbered kickers.
+FORBIDDEN WORDS/PHRASES in my copy: "Ideas that", "Work with a pulse", "constellation", "Enter the system", "mission", "capabilit", "journey log", "open channel", "something with signal", "built with intention", "curious human", "field note", "Loading AI Engine", "Loading Cloud Stack", "A record of", "The path stays in motion", "Hover a node", "initiate_conversation", "FATMA". All headings/subtitles/labels are my own words.
+Page order: Hero (with my portrait), About (intro + facts), Projects (the visual star), Skills (logos), Education & Languages (logos), Experience (Internships & Research), Community (compact, deliberately LESS prominent than projects), Websites, Design (small), Contact, Footer. Nav: About, Projects, Skills, Education, Experience, Community, Websites, Design, Contact + theme toggle + CV pill. No Certificates.
+Always-on background: a fixed floating layer (soft drifting violet blobs + small floating shapes) behind all content. Section backgrounds must therefore be transparent or semi-transparent bands, never opaque blocks.

@@ -5,12 +5,12 @@ linkedin.com/in/yosr-jabloun-232421333 · github.com/yosr580 · portfolio2-ecru-
 PROFILE
 Telecommunications Engineering student at the National Engineering School of Tunis (ENIT), specializing in Data Science for
 Intelligent Communications, with a research-oriented Master of Research in Information Processing and Complexity of the Living
-(TICV). Experience in AI, machine learning, signal processing, computer vision, optical communications and intelligent systems
+(TICV). Experience in AI, machine learning, digital and biological data processing, computer vision, optical communications and intelligent systems
 through academic research, internships and technical projects. Currently seeking a 6-month Engineering internship in AI / Data
 Science to apply research and technical skills to real-world data-driven challenges.
 COMPETENCIES
 AI & Machine Learning Python, TensorFlow, Scikit-learn, CNN, BiLSTM, VideoMAE, representation learning, RAG
-Signal Processing Digital signals, optical communications, SSFM, spectral/power analysis, physiological & biological signals
+Communications & Systems Digital and biological waveform analysis, optical communications, SSFM, spectral/power analysis, and physiological & biological data
 Computer Vision MediaPipe FaceMesh, OpenCV, facial recognition, anti-spoofing, real-time inference
 Data & Software Pandas, NumPy, FastAPI, React, Node.js, Angular, MongoDB, MySQL, Git, WordPress
 Embedded & Systems STM32, FreeRTOS, UART, Web Serial API, distributed systems, microservices
@@ -33,7 +33,7 @@ of a community-validated TSL dataset.
 • Supported technical demonstrations, deployment, and project coordination.
 • 2nd Place, IEEE Region 8 Humanitarian Technologies Competition (Europe, Middle East & North Africa).
 PROJECTS
-TuniLIP+ — Signals & Smart Systems Laboratory (L3S), ENIT 10/2025 – 04/2026
+TuniLIP+ — L3S, ENIT 10/2025 – 04/2026
 Deep Learning, Computer Vision, Sequence Modeling, Multimodal Learning, Transfer Learning
 • Dataset construction & preprocessing of a Tunisian Arabic lip-reading corpus with vocabulary selection for healthcare applications.
 • Development and benchmarking of CNN-BiLSTM (curriculum learning), MobileNetV2 (transfer learning), VideoMAE (Vision

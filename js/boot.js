@@ -1,61 +1,53 @@
 ﻿const BOOT_KEY = "yj-portfolio-boot-seen";
-const TOTAL_MS = 1540;
-const EXIT_MS = 360;
+const HOLD_MS = 520;
+const EXIT_MS = 380;
 
 export function runBoot() {
   const overlay = document.querySelector("#boot");
   if (!overlay) return Promise.resolve();
 
+  let seen = false;
+  try {
+    seen = sessionStorage.getItem(BOOT_KEY) === "1";
+  } catch {
+    seen = false;
+  }
+
+  if (seen || matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    overlay.remove();
+    document.body.classList.remove("boot-active");
+    return Promise.resolve();
+  }
+
   return new Promise((resolve) => {
     let finished = false;
-    const lines = [...overlay.querySelectorAll("[data-boot-line]")];
-    const progress = overlay.querySelector(".boot-progress");
-
     const finish = (instant = false) => {
       if (finished) return;
       finished = true;
-      window.removeEventListener("keydown", skip);
+      removeEventListener("keydown", skip);
       overlay.removeEventListener("click", skip);
       try {
         sessionStorage.setItem(BOOT_KEY, "1");
       } catch {
-        // The sequence still completes if session storage is unavailable.
+        // The intro can finish if session storage is unavailable.
       }
       document.body.classList.remove("boot-active");
-      overlay.classList.add("is-exiting");
-      const remove = () => {
+      if (instant) {
         overlay.remove();
         resolve();
-      };
-      if (instant) {
-        remove();
-      } else {
-        overlay.addEventListener("transitionend", remove, { once: true });
-        window.setTimeout(remove, EXIT_MS);
+        return;
       }
+      overlay.classList.add("is-exiting");
+      setTimeout(() => {
+        overlay.remove();
+        resolve();
+      }, EXIT_MS);
     };
-
     const skip = () => finish(true);
-    let seen = false;
-    try {
-      seen = sessionStorage.getItem(BOOT_KEY) === "1";
-    } catch {
-      seen = false;
-    }
 
-    if (seen || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      finish(true);
-      return;
-    }
-
-    overlay.addEventListener("click", skip, { once: true });
-    window.addEventListener("keydown", skip, { once: true });
-    lines.forEach((line, index) => {
-      window.setTimeout(() => line.classList.add("is-visible"), index * 170);
-    });
-    window.requestAnimationFrame(() => {
-      if (progress) progress.style.transform = "scaleX(1)";
-    });
-    window.setTimeout(() => finish(false), TOTAL_MS);
+    overlay.addEventListener("click", skip);
+    addEventListener("keydown", skip);
+    requestAnimationFrame(() => overlay.classList.add("is-ready"));
+    setTimeout(() => finish(false), HOLD_MS);
   });
 }
