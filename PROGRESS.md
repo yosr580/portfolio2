@@ -65,3 +65,7 @@
 - Replaced the top section with the editorial three-line headline, violet Playfair accent, status, project/CV/social links, compact portrait orbit, and the existing two CV-derived introduction paragraphs. Kept all non-top content in place.
 - Added local icon-registry satellites, corrected icon-mask URLs, and added reduced-motion/static behavior with responsive orbit placement. Updated the top-section exception and forbidden scan so `.hx-*` classes and the `#about` orbit are allowed.
 - Verified 1440x900 and 390x844 dark screenshots, reduced motion, light theme readability, no horizontal overflow, and no browser console errors. Screenshots: assets/social/stage11-1440.png and assets/social/stage11-390.png.
+
+## Stage 12
+- Updated internship availability wording from 6-month to 4+ month in the hero and both social preview cards, following the user's preference.
+
