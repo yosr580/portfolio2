@@ -1,43 +1,23 @@
 const fs = require("node:fs");
 const path = require("node:path");
-
 const root = path.resolve(__dirname, "..");
 const output = path.join(root, "assets", "icons");
 const deviconNames = [
-  "python", "numpy", "pandas", "jupyter", "matlab", "tensorflow", "pytorch",
-  "scikitlearn", "keras", "html5", "css3", "dotnetcore", "mysql",
-  "postgresql", "sqlite", "mongodb", "git", "github", "docker", "linux",
-  "bash", "react", "fastapi", "redis", "wordpress", "arduino", "opencv",
-  "cplusplus", "angularjs", "nodejs", "streamlit", "latex"
+  "arduino", "bash", "cplusplus", "css3", "docker", "dotnetcore", "fastapi", "git", "github",
+  "html5", "jupyter", "keras", "latex", "linux", "matlab", "mysql", "numpy", "opencv", "pandas",
+  "postgresql", "python", "pytorch", "react", "redis", "scikitlearn", "sqlite", "streamlit",
+  "tensorflow", "wordpress"
 ];
-const simpleIconNames = [
-  "huggingface", "ollama", "meta", "deepseek", "streamlit", "latex",
-  "mediapipe", "googlegemini"
-];
-
+const simpleIconNames = ["deepseek", "huggingface", "mediapipe", "ollama"];
 fs.mkdirSync(output, { recursive: true });
-function copyFirst(paths, destination, label) {
-  const source = paths.find((candidate) => fs.existsSync(candidate));
-  if (!source) {
-    console.warn(`missing icon source: ${label}`);
-    return false;
-  }
-  fs.copyFileSync(source, path.join(output, destination));
-  return true;
-}
-
 for (const name of deviconNames) {
-  const dir = path.join(root, "node_modules", "devicon", "icons", name);
-  copyFirst([
-    path.join(dir, `${name}-original.svg`),
-    path.join(dir, `${name}-plain.svg`),
-    path.join(dir, `${name}-original-wordmark.svg`),
-    path.join(dir, `${name}-plain-wordmark.svg`)
-  ], `${name}.svg`, `devicon:${name}`);
+  const source = path.join(root, "node_modules", "devicon", "icons", name, `${name}-original.svg`);
+  if (!fs.existsSync(source)) throw new Error(`Missing devicon source: ${name}`);
+  fs.copyFileSync(source, path.join(output, `${name}.svg`));
 }
 for (const name of simpleIconNames) {
-  copyFirst([
-    path.join(root, "node_modules", "simple-icons", "icons", `${name}.svg`)
-  ], `si-${name}.svg`, `simple-icons:${name}`);
+  const source = path.join(root, "node_modules", "simple-icons", "icons", `${name}.svg`);
+  if (!fs.existsSync(source)) throw new Error(`Missing simple-icons source: ${name}`);
+  fs.copyFileSync(source, path.join(output, `si-${name}.svg`));
 }
-console.log(`Copied local skill icons to ${path.relative(root, output)}`);
+console.log(`Copied ${deviconNames.length + simpleIconNames.length} local icons.`);

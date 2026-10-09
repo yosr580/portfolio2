@@ -2,7 +2,7 @@
 - [x] 1b Direction+background
 - [x] 2 Hero+About
 - [x] 3 Projects
-- [ ] 4 Skills+Education+Languages
+- [x] 4 Skills+Education+Languages
 - [ ] 5 Experience
 - [ ] 6 Community (compact)
 - [ ] 7 Websites+Design+Contact+Footer
@@ -25,3 +25,9 @@
 - Added a shared native-dialog lightbox with contain-fit images, counters, keyboard and swipe navigation, backdrop/Escape close, and Lenis pause/resume.
 - Validation passed at 1440px and 390px: no horizontal overflow or console errors; six projects in order; details, links, arrow keys, Escape, backdrop, swipe, and scroll pause/resume checked.
 - Screenshots: assets/social/stage3-1440.png and assets/social/stage3-390.png.
+
+## Stage 4
+- Added seven always-visible skill categories with local Devicon/Simple Icons, monogram fallbacks, registry-backed project chips, and registry-sourced hero logos.
+- Added CV-sourced education entries and English (B2), French (B2), and German (A2) language chips with mapped meters.
+- Validation passed at 1440px and 390px: all 7 groups / 39 tiles and 4 education cards rendered; exact language chips and lower-card reveal checked; no overflow or browser console errors.
+- Screenshots: assets/social/stage4-1440.png and assets/social/stage4-390.png.

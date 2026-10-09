@@ -218,13 +218,24 @@ window.portfolioData = {
     }
   ],
   skills: [
-    { category: "LLMs & GenAI tooling", description: "Running and evaluating open language models and AI services.", whereUsed: "Talan research platform", items: ["huggingface", "groq", "ollama", "llama", "gemma", "deepseek"] },
-    { category: "Machine & Deep Learning", description: "Training, fine-tuning, and comparing learning models.", whereUsed: "TUNILip+ · Talan · Anti-Spoofing", items: ["tensorflow", "pytorch", "scikitlearn", "keras", "cnn", "bilstm", "videomae"] },
-    { category: "Python & Data Science", description: "Analysis, experimentation, and numerical simulation.", whereUsed: "TUNILip+ · Anti-Spoofing · Fiber Laser", items: ["python", "numpy", "pandas", "jupyter", "matlab"] },
-    { category: "Web & Apps", description: "Building interactive interfaces and application backends.", whereUsed: "Talan platform · IEEE websites", items: ["html5", "css3", "streamlit", "dotnet", "react", "fastapi", "wordpress", "nodejs", "angular", "tensorflowjs", "mediapipe"] },
-    { category: "Databases", description: "Storing and querying application and research data.", whereUsed: "Talan research platform", items: ["mysql", "postgresql", "sqlite", "redis", "mongodb"] },
-    { category: "Dev Tools", description: "Version control, containers, command line, and technical writing.", whereUsed: "Talan platform · Engineering reports", items: ["git", "github", "docker", "linux", "bash", "latex"] },
-    { category: "Embedded & Telecom", description: "Embedded platforms, digital and optical systems.", whereUsed: "Fiber Laser · Video Surveillance", items: ["cplusplus", "arduino", "stm32", "fiberoptics", "ccna", "opencv", "mediapipe", "freertos", "uart", "webserial", "dsp", "opticalcommunications"] }
+    { category: "LLMs & GenAI", description: "Models and services for language-focused AI work.", items: ["huggingface", "groq", "ollama", "llama", "gemma", "deepseek"] },
+    { category: "Machine & Deep Learning", description: "Libraries for learning systems and visual data.", items: ["tensorflow", "pytorch", "scikitlearn", "keras", "opencv", "mediapipe"] },
+    { category: "Python & Data", description: "Tools for analysis, experimentation, and computing.", items: ["python", "numpy", "pandas", "jupyter", "matlab", "cplusplus"] },
+    { category: "Web & Apps", description: "Frameworks and languages for interfaces and services.", items: ["html5", "css3", "streamlit", "dotnetcore", "react", "fastapi", "wordpress"] },
+    { category: "Databases", description: "Relational and in-memory data storage systems.", items: ["mysql", "postgresql", "sqlite", "redis"] },
+    { category: "Dev Tools", description: "Everyday tools for code, systems, and documentation.", items: ["git", "github", "docker", "linux", "bash", "latex"] },
+    { category: "Embedded & Telecom", description: "Embedded platforms and communications fundamentals.", items: ["arduino", "stm32", "fiberoptics", "ccna"] }
+  ],
+  education: [
+    { degree: "Master of Research (ongoing)", institution: "National Engineering School of Tunis (ENIT), Tunisia", dates: "09/2026 \u2013 09/2027", detail: "Information Processing and Complexity of the Living (TICV)", logo: "assets/enit-logo.png", alt: "ENIT" },
+    { degree: "Engineering Cycle (ongoing)", institution: "National Engineering School of Tunis (ENIT), Tunisia", dates: "09/2024 \u2013 06/2027", detail: "Telecommunications Engineering specializing in Data Science for Intelligent Communications", logo: "assets/enit-logo.png", alt: "ENIT" },
+    { degree: "Pre-Engineering Studies (Physics & Chemistry)", institution: "Preparatory Institute for Engineering Studies, Nabeul, Tunisia", dates: "09/2022 \u2013 05/2024", detail: "Ranked 144 among 950+ candidates in the National Engineering School Entrance Examination", logo: "assets/logo-ipein.png", alt: "IPEIN" },
+    { degree: "Natural Sciences Baccalaureate (High Honors)", institution: "Mahmoud Messadi High School, Nabeul, Tunisia", dates: "06/2022", detail: "Natural Sciences \u00b7 High Honors", monogram: "MM" }
+  ],
+  languages: [
+    { name: "English", level: "B2" },
+    { name: "French", level: "B2" },
+    { name: "German", level: "A2" }
   ],
   designs: [
     "assets/designs/POSTER TSYP 13 .webp",

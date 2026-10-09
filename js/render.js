@@ -1,4 +1,5 @@
 import "../data.js";
+import { getIcon, iconMarkup } from "./skills.js";
 
 const esc = (value) => String(value ?? "").replace(/[&<>"']/g, (char) => ({
   "&": "&amp;",
@@ -22,32 +23,6 @@ const externalUrl = (value) => {
   } catch {
     return "";
   }
-};
-
-const stackNames = {
-  ai: "AI",
-  arduino: "Arduino",
-  cnn: "CNN",
-  fastapi: "FastAPI",
-  fiberoptics: "Fiber optics",
-  groq: "Groq",
-  keras: "Keras",
-  matlab: "MATLAB",
-  mediapipe: "MediaPipe",
-  opencv: "OpenCV",
-  photonics: "Photonics",
-  postgresql: "PostgreSQL",
-  python: "Python",
-  react: "React",
-  redis: "Redis",
-  reportlab: "ReportLab",
-  smtp: "SMTP",
-  ssfm: "SSFM",
-  tensorflow: "TensorFlow",
-  tensorflowjs: "TensorFlow.js",
-  tsl: "TSL",
-  tts: "TTS",
-  videomae: "VideoMAE",
 };
 
 const linkLabels = [
@@ -79,9 +54,9 @@ function renderMosaic(project) {
 function renderProject(project) {
   const bullets = (project.bullets ?? []).slice(0, 4);
   const impacts = (project.impact ?? []).slice(0, 3);
-  const stack = (project.stack ?? []).map((item) => {
-    const label = stackNames[item.toLowerCase()] ?? item;
-    return `<span class="project-stack-chip">${esc(label)}</span>`;
+  const stack = (project.stack ?? []).map((key) => {
+    const icon = getIcon(key);
+    return `<span class="project-stack-chip">${iconMarkup(key, "project")}<span>${esc(icon.label)}</span></span>`;
   }).join("");
   const approach = Array.isArray(project.approach) ? project.approach.join(" ") : project.approach;
   return `<article class="project-card glass-card" data-reveal data-project-id="${esc(project.id)}" aria-labelledby="project-title-${esc(project.id)}">
