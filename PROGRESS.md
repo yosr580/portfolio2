@@ -1,7 +1,7 @@
 # Progress
 - [x] 1b Direction+background
 - [x] 2 Hero+About
-- [ ] 3 Projects
+- [x] 3 Projects
 - [ ] 4 Skills+Education+Languages
 - [ ] 5 Experience
 - [ ] 6 Community (compact)
@@ -19,3 +19,9 @@
 - Added the responsive portrait hero, rotating role line, CV/contact links, floating skill tiles, and first-person About copy with four CV-sourced count-up cards.
 - Validation: dark 1440px and 390px screenshots; no browser console errors or horizontal overflow; portrait loaded; mobile shows two tiles; About reveal works on scroll.
 - Screenshots: assets/social/stage2-1440.png and assets/social/stage2-390.png.
+
+## Stage 3
+- Added six alternating project cards with three-image mosaics, impact chips, highlighted terms, stack labels, existing resource links, and expandable Goal / How I built it / Outcome details.
+- Added a shared native-dialog lightbox with contain-fit images, counters, keyboard and swipe navigation, backdrop/Escape close, and Lenis pause/resume.
+- Validation passed at 1440px and 390px: no horizontal overflow or console errors; six projects in order; details, links, arrow keys, Escape, backdrop, swipe, and scroll pause/resume checked.
+- Screenshots: assets/social/stage3-1440.png and assets/social/stage3-390.png.

@@ -3,6 +3,8 @@ import { runBoot } from "./boot.js";
 import { initMotion } from "./motion.js";
 import { initFloaters } from "./floaters.js";
 import { initHero } from "./hero.js";
+import { renderProjects } from "./render.js";
+import { initProjects } from "./projects.js";
 
 function initNavigation() {
   const header = document.querySelector("#site-header");
@@ -38,7 +40,9 @@ function initNavigation() {
 initTheme();
 initNavigation();
 runBoot().then(() => {
+  renderProjects();
   initMotion();
   initFloaters();
   initHero();
+  initProjects();
 });

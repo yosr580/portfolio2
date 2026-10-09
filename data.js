@@ -4,7 +4,7 @@ window.portfolioData = {
     {
       id: "talan-platform",
       title: "AI Research Support Platform",
-      context: "Talan, Tunisia | June-August 2026",
+      context: "Talan · Summer 2026",
       headline: "Evaluated JEPA models and built a **research support platform** for AI research.",
       problem: "The work focused on evaluating JEPA checkpoints and comparing them with established vision-model baselines.",
       approach: ["Evaluated I-JEPA and V-JEPA 2 checkpoints alongside established vision-model baselines.", "Built an interactive encyclopedia, model advisor, and arXiv research radar."],
@@ -22,7 +22,7 @@ window.portfolioData = {
     {
       id: "e-learnit",
       title: "E-LearNIT (The One)",
-      context: "IEEE Region 8 Humanitarian Technologies Competition | November 2025-January 2026",
+      context: "IEEE Region 8 · November 2025-January 2026",
       headline: "An AI-powered platform for **Tunisian Sign Language recognition** and text-to-speech.",
       problem: "The project focuses on Tunisian Sign Language recognition and text-to-speech.",
       approach: ["Contributed to real-time Tunisian Sign Language recognition and text-to-speech.", "Helped create a community-validated Tunisian Sign Language dataset."],
@@ -40,7 +40,7 @@ window.portfolioData = {
     {
       id: "tunilip",
       title: "TUNILip+",
-      context: "L3S, ENIT | October 2025-April 2026",
+      context: "L3S, ENIT · October 2025-April 2026",
       headline: "A browser-based system for **Tunisian Arabic lip reading**, built around a new corpus.",
       problem: "No Tunisian Arabic lip-reading dataset or benchmark was available for the project.",
       approach: ["Collected and preprocessed a corpus with 50+ volunteer speakers.", "Benchmarked CNN-BiLSTM, MobileNetV2 transfer learning, VideoMAE fine-tuning, and a hybrid ensemble."],
@@ -61,7 +61,7 @@ window.portfolioData = {
     {
       id: "anti-spoofing",
       title: "Anti-Spoofing Module for Facial Recognition",
-      context: "Computer Vision Internship, Groupe SFM | July-August 2025",
+      context: "Groupe SFM · July-August 2025",
       headline: "A real-time **face anti-spoofing** workflow for facial recognition and enrollment.",
       problem: "The internship focused on detecting presentation attacks in facial recognition and enrollment.",
       approach: ["Researched printed photos, screen replays, videos, and 2D/3D masks.", "Built CNN-based liveness verification and connected it to OpenCV webcam inference."],
@@ -83,7 +83,7 @@ window.portfolioData = {
     {
       id: "video-surveillance",
       title: "Intelligent Video Surveillance",
-      context: "Team project | Embedded systems and computer vision",
+      context: "Team project · Embedded systems and computer vision",
       headline: "A camera-based system for **unknown-face alerts** and attendance reporting.",
       problem: "The project focused on detecting unknown faces and producing attendance reports from camera input.",
       approach: ["Combined an ArduCam with a Python facial-recognition pipeline.", "Added email alerts with captured images and generated PDF attendance reports."],
@@ -101,7 +101,7 @@ window.portfolioData = {
     {
       id: "fiber-laser",
       title: "Figure-of-Eight Fiber Laser Simulation",
-      context: "Optical Fiber Laser System Simulation, ENIT | October 2024-April 2025",
+      context: "ENIT · October 2024-April 2025",
       headline: "A numerical study of **ultrashort pulse dynamics** in a figure-of-eight fiber laser.",
       problem: "The project studied how cavity parameters influence pulse dynamics and laser stability.",
       approach: ["Modeled laser cavity components and solved the nonlinear Schrödinger equation with SSFM.", "Varied cavity length, gain, and saturation energy to study pulse behavior."],
