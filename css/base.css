@@ -126,10 +126,11 @@ button {
 }
 
 .title-emphasis {
-  background: linear-gradient(120deg, #c9b8ff, #8b6cff);
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
+  color: var(--violet-soft, #c9b8ff);
+  font-family: "Playfair Display", Georgia, serif;
+  font-style: italic;
+  font-weight: 500;
+  letter-spacing: -.02em;
 }
 
 .gradient-text {

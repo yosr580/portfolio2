@@ -58,8 +58,9 @@
   .hx-about { grid-template-columns: 1fr; }
 }
 @media(max-width:560px) {
-  .hx-eyebrow { gap: .45rem; font-size: 10px; letter-spacing: .08em; }
-  .hx-eyebrow i { width: 24px; flex-basis: 24px; }
+  .hx-eyebrow { flex-wrap: wrap; gap: .45rem; font-size: 10px; letter-spacing: .08em; white-space: normal; }
+  .hx-eyebrow i { display: none; }
+  .hx-eyebrow span:last-child { flex-basis: 100%; }
   .hx-title { font-size: clamp(2.15rem,9.2vw,3.25rem); }
   .hx-cta { gap: .85rem; }
   .hx-status { align-items: flex-start; }

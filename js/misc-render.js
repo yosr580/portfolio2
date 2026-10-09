@@ -14,15 +14,15 @@ const websites = [
   {
     id: "ieee-enit", title: "IEEE ENIT Student Branch", url: "http://enit.ieee.tn/", displayUrl: "enit.ieee.tn",
     description: "Designed and developed the official WordPress website for the IEEE ENIT Student Branch, as part of the Student Branch Chair role in 2025.",
-    images: ["assets/social/site-ieee-website.jpg", "assets/volunteering/student branch chair/community building.webp", "assets/volunteering/student branch chair/hackathons.webp"],
-    captions: ["IEEE ENIT Student Branch website", "Student Branch community building", "Student Branch hackathons"],
+    images: ["assets/wp-project-ieee-enit-1.jpg", "assets/wp-project-ieee-enit-2.jpg", "assets/wp-project-ieee-enit-3.jpg"],
+    captions: ["IEEE ENIT Student Branch website — home", "IEEE ENIT Student Branch website — events", "IEEE ENIT Student Branch website — units"],
     video: "assets/videos/wp-project-ieee-enit.mp4"
   },
   {
     id: "education-week", title: "IEEE Education Week Tunisia", url: "https://educationweek.ieee.tn/", displayUrl: "educationweek.ieee.tn",
     description: "Developed the IEEE Education Week Tunisia website in collaboration with IEEE Tunisia Section, as part of the Educational Activities Committee within the Technical Activities Committee.",
-    images: ["assets/volunteering/IEEE Education week in tunisia/eduweek.webp", "assets/volunteering/IEEE Education week in tunisia/20260419_180524.webp", "assets/volunteering/IEEE Education week in tunisia/IMG_0706.webp"],
-    captions: ["IEEE Education Week website", "IEEE Education Week Tunisia", "IEEE Education Week event"],
+    images: ["assets/ed1.png", "assets/ed2.png", "assets/ed3.png"],
+    captions: ["IEEE Education Week Tunisia — home", "IEEE Education Week Tunisia — committee", "IEEE Education Week Tunisia — programs"],
     video: "assets/videos/wp-project-edu-week.mp4"
   }
 ];
@@ -33,7 +33,7 @@ function renderWebsite(site) {
   const thumbnails = thumbs.map((path, index) => `<button class="website-thumb" type="button" data-site-photo="${index + 1}" aria-label="Open ${esc(site.captions[index + 1])}"><img src="${esc(assetUrl(path))}" alt="${esc(site.captions[index + 1])}" loading="lazy"><span>${esc(site.captions[index + 1])}</span></button>`).join("");
   return `<article class="website-card glass-card" data-reveal data-website="${esc(site.id)}">
     <div class="website-media"><div class="browser-frame"><div class="browser-chrome"><span class="browser-dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="browser-url">${esc(site.displayUrl)}</span></div>${mainButton}</div><div class="website-thumbnails">${thumbnails}</div></div>
-    <div class="website-copy"><span class="website-type">WordPress</span><h3>${esc(site.title)}</h3><p>${esc(site.description)}</p><details class="website-demo"><summary>Watch demo</summary><video controls preload="none" poster="${esc(assetUrl(main))}"><source src="${esc(assetUrl(site.video))}" type="video/mp4">Your browser does not support embedded video.</video></details><a class="button website-visit" href="${esc(site.url)}" target="_blank" rel="noopener noreferrer">Visit site <span aria-hidden="true">&#8599;</span></a></div>
+    <div class="website-copy"><span class="website-type">WordPress</span><h3>${esc(site.title)}</h3><p>${esc(site.description)}</p><div class="website-demo"><p class="website-demo-label">Website preview</p><video class="website-demo-preview" autoplay muted loop playsinline controls preload="metadata" poster="${esc(assetUrl(main))}" aria-label="Video preview of ${esc(site.title)}"><source src="${esc(assetUrl(site.video))}" type="video/mp4">Your browser does not support embedded video.</video></div><a class="button website-visit" href="${esc(site.url)}" target="_blank" rel="noopener noreferrer">Visit site <span aria-hidden="true">&#8599;</span></a></div>
   </article>`;
 }
 function renderDesigns(paths) {
@@ -42,7 +42,7 @@ function renderDesigns(paths) {
   if (!section || !head) return;
   section.classList.add("design-section");
   const title = head.querySelector(".section-title");
-  if (title) title.textContent = "Design work";
+  if (title) title.innerHTML = 'Design <span class="title-emphasis">work</span>';
   let grid = section.querySelector(".design-grid");
   if (!grid) { grid = document.createElement("div"); grid.className = "design-grid container"; head.insertAdjacentElement("afterend", grid); }
   const shown = Number(grid.dataset.shown || 6);
@@ -70,7 +70,7 @@ function renderContact() {
   head.querySelector(".pill")?.replaceChildren("Get in touch");
   const title = head.querySelector(".section-title");
   const intro = head.querySelector(".section-intro");
-  if (title) title.textContent = "Contact me";
+  if (title) title.innerHTML = 'Contact <span class="title-emphasis">me</span>';
   if (intro) intro.textContent = "Have an opportunity, a project or a question? Send me a message.";
   section.querySelector(".contact-card")?.remove();
   const card = document.createElement("div"); card.className = "contact-card glass-card container"; card.dataset.reveal = "";
@@ -108,10 +108,8 @@ function initWebsiteGalleries(section) {
   section.querySelectorAll(".website-card").forEach((card, index) => {
     const site = websites[index];
     card.querySelectorAll("[data-site-photo]").forEach((button) => button.addEventListener("click", () => openLightbox(site.images.map(assetUrl), Number(button.dataset.sitePhoto), site.captions)));
-    const demo = card.querySelector(".website-demo");
-    const video = demo.querySelector("video");
-    video.addEventListener("play", (event) => { document.querySelectorAll(".website-demo video").forEach((other) => { if (other !== event.currentTarget) other.pause(); }); });
-    demo.addEventListener("toggle", () => { if (!demo.open) video.pause(); });
+    const video = card.querySelector(".website-demo-preview");
+    video.addEventListener("play", (event) => { document.querySelectorAll(".website-demo-preview").forEach((other) => { if (other !== event.currentTarget) other.pause(); }); });
   });
 }
 export function initMiscSections() {

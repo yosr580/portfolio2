@@ -21,21 +21,17 @@ window.portfolioData = {
     },
     {
       id: "e-learnit",
-      title: "E-LearNIT (The One)",
+      title: "E-LearNIT · AI-Powered Tunisian Sign Language Translator",
       context: "IEEE Region 8 · November 2025-January 2026",
-      headline: "An AI-powered platform for **Tunisian Sign Language recognition** and text-to-speech.",
-      problem: "The project focuses on Tunisian Sign Language recognition and text-to-speech.",
-      approach: ["Contributed to real-time Tunisian Sign Language recognition and text-to-speech.", "Helped create a community-validated Tunisian Sign Language dataset."],
+      headline: "A Chrome extension translating **Tunisian Sign Language** into contextual text and speech for online learning.",
+      problem: "Deaf and hard-of-hearing students can face barriers to participating in online classes when Tunisian Sign Language is not supported.",
+      approach: ["Contributed to a Chrome extension that samples webcam frames every 3–4 seconds, encodes them with CLIP ViT-B/32, and searches Tunisian Sign Language examples in ChromaDB.", "The system uses a Groq-hosted language model to build context-aware phrases in Tunisian Arabic, French, and English, with text-to-speech and one-click chat sharing for Google Meet, Teams, and Zoom."],
       result: "The project earned second place in the IEEE Region 8 Humanitarian Technologies Competition.",
       impact: ["2nd place", "IEEE Region 8 competition", "Community-validated TSL dataset"],
-      bullets: [
-        "Contributed to a platform for **real-time Tunisian Sign Language recognition** and text-to-speech.",
-        "Helped create a **community-validated TSL dataset**.",
-        "Supported technical demonstrations, deployment, and project coordination."
-      ],
+      bullets: ["Contributed to **real-time Tunisian Sign Language recognition** through webcam sampling and visual similarity search.", "The pipeline encodes frames with **CLIP ViT-B/32** and retrieves sign examples from **ChromaDB**.", "Added context-aware phrase construction across **Tunisian Arabic, French, and English**, plus speech output and meeting-chat integration."],
       stack: ["ai", "tsl", "tts"],
       images: ["assets/region 8 humanitarian technologies competition/1774718961080.webp", "assets/region 8 humanitarian technologies competition/1774718962024.webp", "assets/region 8 humanitarian technologies competition/1785353097311.webp"],
-      links: {}
+      links: { github: "https://github.com/yosr580/E-learNIT" }
     },
     {
       id: "tunilip",
@@ -177,7 +173,7 @@ window.portfolioData = {
   education: [
     { degree: "Master of Research (ongoing)", institution: "National Engineering School of Tunis (ENIT), Tunisia", dates: "09/2026 \u2013 09/2027", detail: "Information Processing and Complexity of the Living (TICV)", logo: "assets/enit-logo.png", alt: "ENIT" },
     { degree: "Engineering Cycle (ongoing)", institution: "National Engineering School of Tunis (ENIT), Tunisia", dates: "09/2024 \u2013 06/2027", detail: "Telecommunications Engineering specializing in Data Science for Intelligent Communications", logo: "assets/enit-logo.png", alt: "ENIT" },
-    { degree: "Pre-Engineering Studies (Physics & Chemistry)", institution: "Preparatory Institute for Engineering Studies, Nabeul, Tunisia", dates: "09/2022 \u2013 05/2024", detail: "Ranked 144 among 950+ candidates in the National Engineering School Entrance Examination", logo: "assets/logo-ipein.png", alt: "IPEIN" },
+    { degree: "Pre-Engineering Studies (Physics & Chemistry)", institution: "Preparatory Institute for Engineering Studies, Nabeul, Tunisia", dates: "09/2022 \u2013 05/2024", detail: "Ranked 144 among 1000+ candidates in the National Engineering School Entrance Examination", logo: "assets/logo-ipein.png", alt: "IPEIN" },
     { degree: "Natural Sciences Baccalaureate (High Honors)", institution: "Mahmoud Messadi High School, Nabeul, Tunisia", dates: "06/2022", detail: "Natural Sciences \u00b7 High Honors", monogram: "MM" }
   ],
   languages: [

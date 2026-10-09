@@ -113,6 +113,6 @@ NO Experience/Internships section anywhere. NO stat/number boxes anywhere: numbe
 Every section title (h2) uses ONE shared header style, size and position. Portrait is small (max about 200px wide).
 
 ## HERO EXCEPTION (v4)
-The top section (id about) uses an editorial hero: huge 3-line headline with the middle line in Playfair Display italic (violet), a DM Mono eyebrow, a round-arrow link, and an orbit graphic. This is allowed ONLY in the top section. All other sections keep DIRECTION v2/v3 (Sora + Inter, pill labels, rounded glass cards).
+The top section (id about) uses an editorial hero: huge 3-line headline with the middle line in Playfair Display italic (violet), a DM Mono eyebrow, a round-arrow link, and an orbit graphic. This layout is allowed ONLY in the top section. All other sections keep DIRECTION v2/v3 (Sora + Inter, pill labels, rounded glass cards); their violet title accents use Playfair Display italic 500.
 Use my own wording and my own class names (prefix .hx-). Do not use these phrases: "Ideas that", "think, scale", "feel right", "Enter the system", "SCROLL TO EXPLORE", "FATMA". No scroll cue.
 Top-section scan exception: `.hx-*` classes and the orbit inside `#about` are intentional and must not be flagged as forbidden reference elements.

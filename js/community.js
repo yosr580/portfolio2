@@ -94,7 +94,7 @@ export function initCommunity() {
   if (!section || !head || !Array.isArray(entries)) return;
   const title = head.querySelector(".section-title");
   const subtitle = head.querySelector(".section-intro");
-  if (title) title.textContent = "Good work happens together.";
+  if (title) title.innerHTML = 'Good work happens <span class="title-emphasis">together.</span>';
   if (subtitle) subtitle.textContent = "Four roles across my IEEE communities.";
   section.querySelector(".community-list")?.remove();
   const list = document.createElement("div"); list.className = "community-list container";
