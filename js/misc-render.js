@@ -41,19 +41,25 @@ function renderDesigns(paths) {
   const head = section?.querySelector(".section-head");
   if (!section || !head) return;
   section.classList.add("design-section");
+  section.querySelector(".section-kicker, .section-pill, .pill")?.classList.add("design-kicker-hidden");
   const title = head.querySelector(".section-title");
-  if (title) title.innerHTML = 'Visual ideas, <span class="gradient-text">made tangible.</span>';
+  if (title) title.textContent = "Design work";
   let grid = section.querySelector(".design-grid");
   if (!grid) { grid = document.createElement("div"); grid.className = "design-grid container"; head.insertAdjacentElement("afterend", grid); }
-  const shown = Number(grid.dataset.shown || 12);
+  const shown = Number(grid.dataset.shown || 6);
   const captions = paths.map((_, index) => `Design ${String(index + 1).padStart(2, "0")}`);
   grid.innerHTML = paths.slice(0, shown).map((path, index) => `<button class="design-thumb" type="button" data-design-index="${index}" aria-label="Open ${captions[index]}"><img src="${esc(assetUrl(path))}" alt="${captions[index]}" loading="lazy"></button>`).join("");
   grid.dataset.shown = String(Math.min(shown, paths.length));
   section.querySelector(".design-more")?.remove();
-  if (paths.length > 12) {
+  if (paths.length > 6) {
     const more = document.createElement("button"); more.className = "button button-outline design-more"; more.type = "button";
-    more.textContent = shown >= paths.length ? "Show fewer designs" : "Show all designs";
-    more.addEventListener("click", () => { grid.dataset.shown = shown >= paths.length ? "12" : String(paths.length); renderDesigns(paths); });
+    more.textContent = shown >= paths.length ? "Show fewer designs" : `View all ${paths.length} designs`;
+    more.addEventListener("click", () => {
+      const expanding = shown < paths.length;
+      grid.dataset.shown = expanding ? String(paths.length) : "6";
+      renderDesigns(paths);
+      if (expanding && !matchMedia("(prefers-reduced-motion: reduce)").matches && window.gsap) gsap.fromTo(grid.querySelectorAll(".design-thumb:nth-child(n+7)"), { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: .28, stagger: .025, ease: "power2.out" });
+    });
     grid.insertAdjacentElement("afterend", more);
   }
   grid.querySelectorAll(".design-thumb").forEach((button) => button.addEventListener("click", () => openLightbox(paths.map(assetUrl), Number(button.dataset.designIndex), captions)));

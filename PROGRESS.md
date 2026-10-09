@@ -7,6 +7,7 @@
 - [x] 6 Community (compact)
 - [x] 7 Websites+Design+Contact+Footer
 - [ ] 8 QA+social image
+- [x] 10 Projects grid + design
 
 ## Stage 1b
 - Adopted Sora/Inter typography, gradient heading accents, violet pill labels, rounded glass card styles, and translucent section bands.
@@ -46,3 +47,8 @@
 - Added two WordPress site cards with existing imagery and demo videos, a 12-of-24 expandable design grid, contact form/actions, and a simple footer with Lenis-aware back-to-top.
 - Validation passed at 1440px and 390px: site/design lightboxes, video toggles, mailto contents, clipboard state, 24 design items, and no horizontal overflow. Existing Stage 4 Simple Icons mask URLs still produce 404 requests.
 - Screenshots: assets/social/stage7-1440.png and assets/social/stage7-390.png.
+
+## Stage 10
+- Reworked the six existing projects into a compact two-column desktop grid (single column below 1000px), retaining every project record, photo, and link; cards now use three-photo mosaics, capped stack chips, concise headlines, and a shared details dialog with full project content and gallery.
+- Kept project tilt to 3 degrees on desktop; cards use the standard reveal hooks and a 4px hover lift. Replaced the design heading with plain “Design work” and a quiet six-image preview that expands to all 24 designs.
+- Browser DOM check found six project cards, a shared project dialog, and six initial design thumbnails; `git diff --check` passed. Screenshots: assets/social/stage10-1440.png and assets/social/stage10-390.png. The 390px capture also shows existing hero content extending beyond the viewport; that is outside Stage 10 scope. Stage 4 icon mask 404s remain a previously recorded issue.

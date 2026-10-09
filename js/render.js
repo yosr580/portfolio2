@@ -52,31 +52,22 @@ function renderMosaic(project) {
 }
 
 function renderProject(project) {
-  const bullets = (project.bullets ?? []).slice(0, 4);
-  const impacts = (project.impact ?? []).slice(0, 3);
-  const stack = (project.stack ?? []).map((key) => {
+  const impacts = (project.impact ?? []).slice(0, 2);
+  const stackKeys = project.stack ?? [];
+  const stack = stackKeys.slice(0, 6).map((key) => {
     const icon = getIcon(key);
     return `<span class="project-stack-chip">${iconMarkup(key, "project")}<span>${esc(icon.label)}</span></span>`;
-  }).join("");
-  const approach = Array.isArray(project.approach) ? project.approach.join(" ") : project.approach;
+  }).join("") + (stackKeys.length > 6 ? `<span class="project-stack-more">+${stackKeys.length - 6}</span>` : "");
+  const headline = mark(project.headline).replace(/<mark>(.*?)<\/mark>/g, '<span class="gradient-text">$1</span>');
   return `<article class="project-card glass-card" data-reveal data-project-id="${esc(project.id)}" aria-labelledby="project-title-${esc(project.id)}">
     ${renderMosaic(project)}
     <div class="project-copy">
       <p class="project-context">${esc(project.context)}</p>
       <h3 class="project-title" id="project-title-${esc(project.id)}">${esc(project.title)}</h3>
-      <p class="project-headline">${mark(project.headline)}</p>
+      <p class="project-headline">${headline}</p>
       <div class="project-impact" aria-label="Project highlights">${impacts.map((item) => `<span>${esc(item)}</span>`).join("")}</div>
-      <ul class="project-bullets">${bullets.map((item) => `<li>${mark(item)}</li>`).join("")}</ul>
       <div class="project-stack" aria-label="Technology stack">${stack}</div>
-      <div class="project-actions">${renderLinks(project.links)}</div>
-      <details class="project-details">
-        <summary>More details</summary>
-        <div class="project-details-content"><div class="project-details-inner">
-          <section><h4>Goal</h4><p>${mark(project.problem)}</p></section>
-          <section><h4>How I built it</h4><p>${mark(approach)}</p></section>
-          <section><h4>Outcome</h4><p>${mark(project.result)}</p></section>
-        </div></div>
-      </details>
+      <div class="project-actions"><button class="button button-outline project-link" type="button" data-project-details="${esc(project.id)}">Details</button>${renderLinks(project.links)}</div>
     </div>
   </article>`;
 }
@@ -87,9 +78,9 @@ export function renderProjects() {
   const sectionHead = section?.querySelector(".section-head");
   if (!section || !sectionHead || !Array.isArray(projects)) return;
 
-  section.querySelector(".project-list")?.remove();
+  section.querySelector(".project-list, .project-grid")?.remove();
   const list = document.createElement("div");
-  list.className = "project-list container";
+  list.className = "project-grid container";
   list.innerHTML = projects.map(renderProject).join("");
   sectionHead.insertAdjacentElement("afterend", list);
 }
