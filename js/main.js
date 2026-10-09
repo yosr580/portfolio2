@@ -6,6 +6,7 @@ import { initHero } from "./hero.js";
 import { renderProjects } from "./render.js";
 import { initProjects } from "./projects.js";
 import { initSkills } from "./skills.js";
+import { initExperience } from "./experience.js";
 
 function initNavigation() {
   const header = document.querySelector("#site-header");
@@ -43,6 +44,7 @@ initNavigation();
 runBoot().then(() => {
   initSkills();
   renderProjects();
+  initExperience();
   initMotion();
   initFloaters();
   initHero();

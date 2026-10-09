@@ -3,7 +3,7 @@
 - [x] 2 Hero+About
 - [x] 3 Projects
 - [x] 4 Skills+Education+Languages
-- [ ] 5 Experience
+- [x] 5 Experience
 - [ ] 6 Community (compact)
 - [ ] 7 Websites+Design+Contact+Footer
 - [ ] 8 QA+social image
@@ -31,3 +31,8 @@
 - Added CV-sourced education entries and English (B2), French (B2), and German (A2) language chips with mapped meters.
 - Validation passed at 1440px and 390px: all 7 groups / 39 tiles and 4 education cards rendered; exact language chips and lower-card reveal checked; no overflow or browser console errors.
 - Screenshots: assets/social/stage4-1440.png and assets/social/stage4-390.png.
+
+## Stage 5
+- Added a sticky editorial intro, verified internship/research counts, four CV-derived glass cards, stack logos, project links, and scroll progress/active-card treatment.
+- Validation passed at 1440px and 390px: four CV entries, two internship / two research counts, all project links, sticky desktop / static mobile layout, no overflow or browser console errors.
+- Screenshots: assets/social/stage5-1440.png and assets/social/stage5-390.png.
