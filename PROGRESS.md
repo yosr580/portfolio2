@@ -5,7 +5,7 @@
 - [x] 4 Skills+Education+Languages
 - [x] 5 Experience
 - [x] 6 Community (compact)
-- [ ] 7 Websites+Design+Contact+Footer
+- [x] 7 Websites+Design+Contact+Footer
 - [ ] 8 QA+social image
 
 ## Stage 1b
@@ -41,3 +41,8 @@
 - Added a compact four-role accordion with the CV-sourced Student Branch details, filename captions, award marker, small filmstrips, and shared lightbox integration.
 - Validation passed at 1440px and 390px: four compact rows, exclusive accordion state, 24 photos loaded, filename caption fixes/award tag, filmstrip arrows and shared lightbox checked; no overflow or console errors.
 - Screenshots: assets/social/stage6-1440.png and assets/social/stage6-390.png.
+
+## Stage 7
+- Added two WordPress site cards with existing imagery and demo videos, a 12-of-24 expandable design grid, contact form/actions, and a simple footer with Lenis-aware back-to-top.
+- Validation passed at 1440px and 390px: site/design lightboxes, video toggles, mailto contents, clipboard state, 24 design items, and no horizontal overflow. Existing Stage 4 Simple Icons mask URLs still produce 404 requests.
+- Screenshots: assets/social/stage7-1440.png and assets/social/stage7-390.png.

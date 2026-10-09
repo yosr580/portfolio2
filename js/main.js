@@ -8,6 +8,7 @@ import { initProjects } from "./projects.js";
 import { initSkills } from "./skills.js";
 import { initExperience } from "./experience.js";
 import { initCommunity } from "./community.js";
+import { initMiscSections } from "./misc-render.js";
 
 function initNavigation() {
   const header = document.querySelector("#site-header");
@@ -47,6 +48,7 @@ runBoot().then(() => {
   renderProjects();
   initExperience();
   initCommunity();
+  initMiscSections();
   initMotion();
   initFloaters();
   initHero();
