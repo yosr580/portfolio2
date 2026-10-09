@@ -9,6 +9,7 @@
 - [ ] 8 QA+social image
 - [x] 9b Structure fix
 - [x] 10 Projects grid + design
+- [x] 11 Editorial hero
 
 ## Stage 1b
 - Adopted Sora/Inter typography, gradient heading accents, violet pill labels, rounded glass card styles, and translucent section bands.
@@ -59,3 +60,8 @@
 - Removed the Experience section, module, stylesheet, related links and `researchExperiences` data; reordered nav and sections, and applied a single shared h2 style. Contact now uses the requested plain title and copy.
 - Playwright: all seven h2s measured at left 120px and font 44.8px/700; top positions 95–163px. Correct section order; zero stat/count boxes; at 390px scrollWidth=390, portrait above title, no clipped h2s or page errors. `rg` requested scan returned no matches.
 - Screenshots: assets/social/stage9b-1440.png and assets/social/stage9b-390.png.
+
+## Stage 11
+- Replaced the top section with the editorial three-line headline, violet Playfair accent, status, project/CV/social links, compact portrait orbit, and the existing two CV-derived introduction paragraphs. Kept all non-top content in place.
+- Added local icon-registry satellites, corrected icon-mask URLs, and added reduced-motion/static behavior with responsive orbit placement. Updated the top-section exception and forbidden scan so `.hx-*` classes and the `#about` orbit are allowed.
+- Verified 1440x900 and 390x844 dark screenshots, reduced motion, light theme readability, no horizontal overflow, and no browser console errors. Screenshots: assets/social/stage11-1440.png and assets/social/stage11-390.png.

@@ -125,6 +125,13 @@ button {
   letter-spacing: -.03em;
 }
 
+.title-emphasis {
+  background: linear-gradient(120deg, #c9b8ff, #8b6cff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
 .gradient-text {
   background: linear-gradient(120deg, #c9b8ff, #8b6cff);
   background-clip: text;

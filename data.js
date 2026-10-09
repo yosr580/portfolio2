@@ -166,7 +166,7 @@ window.portfolioData = {
     }
   ],
   skills: [
-    { category: "LLMs & GenAI", description: "Models and services for language-focused AI work.", items: ["huggingface", "groq", "ollama", "llama", "gemma", "deepseek"] },
+    { category: "LLMs & GenAI", description: "Models and services for language-focused AI work.", items: ["huggingface", "groq", "ollama", "gemma", "deepseek"] },
     { category: "Machine & Deep Learning", description: "Libraries for learning systems and visual data.", items: ["tensorflow", "pytorch", "scikitlearn", "keras", "opencv", "mediapipe"] },
     { category: "Python & Data", description: "Tools for analysis, experimentation, and computing.", items: ["python", "numpy", "pandas", "jupyter", "matlab", "cplusplus"] },
     { category: "Web & Apps", description: "Frameworks and languages for interfaces and services.", items: ["html5", "css3", "streamlit", "dotnetcore", "react", "fastapi", "wordpress"] },

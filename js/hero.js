@@ -1,36 +1,75 @@
-const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+import { iconMarkup } from "./skills.js";
 
-function initPortraitParallax(hero, portrait) {
-  if (reduceMotion || !matchMedia("(min-width: 900px) and (pointer: fine)").matches) return;
-  hero.addEventListener("pointermove", (event) => {
-    const rect = hero.getBoundingClientRect();
-    const x = (event.clientX - rect.left) / rect.width - 0.5;
-    const y = (event.clientY - rect.top) / rect.height - 0.5;
-    gsap.to(portrait, { x: x * 7, y: y * 6, duration: .8, ease: "power3.out", overwrite: "auto" });
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+function initOrbit() {
+  const root = document.querySelector(".hx-orbit");
+  if (!root) return;
+
+  const compact = matchMedia("(max-width: 1000px)").matches;
+  const rings = [
+    { a: .47, b: .17, rot: -14, sp: .00022, sats: compact ? ["pytorch", "huggingface"] : ["pytorch", "huggingface", "python"] },
+    { a: .17, b: .40, rot: -28, sp: -.0003, sats: compact ? ["tensorflow"] : ["tensorflow", "opencv"] },
+  ];
+
+  rings.forEach((ring) => {
+    ring.els = ring.sats.map((key) => {
+      const satellite = document.createElement("span");
+      satellite.className = "hx-sat";
+      satellite.setAttribute("aria-hidden", "true");
+      satellite.innerHTML = iconMarkup(key);
+      root.append(satellite);
+      return satellite;
+    });
   });
-  hero.addEventListener("pointerleave", () => {
-    gsap.to(portrait, { x: 0, y: 0, duration: .8, ease: "power3.out", overwrite: "auto" });
-  });
+
+  let raf = 0;
+  let visible = true;
+  const start = performance.now();
+  const draw = (time) => {
+    const size = root.clientWidth;
+    rings.forEach((ring) => {
+      const angle = ring.rot * Math.PI / 180;
+      const cos = Math.cos(angle);
+      const sin = Math.sin(angle);
+      ring.els.forEach((element, index) => {
+        const theta = (reduce ? 0 : (time - start) * ring.sp) + index * Math.PI * 2 / ring.els.length;
+        const px = ring.a * size * Math.cos(theta);
+        const py = ring.b * size * Math.sin(theta);
+        const x = px * cos - py * sin;
+        const y = px * sin + py * cos;
+        const depth = (Math.sin(theta) + 1) / 2;
+        element.style.transform = `translate(${x}px,${y}px) scale(${.8 + .3 * depth})`;
+        element.style.opacity = (.55 + .45 * depth).toFixed(2);
+        element.style.zIndex = depth > .5 ? "3" : "1";
+      });
+    });
+    if (!reduce && visible && !document.hidden) raf = requestAnimationFrame(draw);
+  };
+  const resume = () => {
+    cancelAnimationFrame(raf);
+    draw(performance.now());
+  };
+
+  if ("IntersectionObserver" in window) {
+    new IntersectionObserver(([entry]) => {
+      visible = entry.isIntersecting;
+      if (visible) resume(); else cancelAnimationFrame(raf);
+    }).observe(root);
+  }
+  document.addEventListener("visibilitychange", () => { if (!document.hidden) resume(); else cancelAnimationFrame(raf); });
+  window.addEventListener("resize", () => { if (reduce || !visible) draw(performance.now()); });
+  draw(start);
 }
 
 export function initHero() {
-  const hero = document.querySelector("#about");
-  const portrait = document.querySelector(".hero-portrait-frame");
-  if (!hero || !portrait) return;
-  initPortraitParallax(hero, portrait);
-  if (reduceMotion) return;
-
-  const titleWords = [...hero.querySelectorAll(".hero-title-word")];
-  const revealGroup = [
-    hero.querySelector(".hero-idiom"),
-    ...hero.querySelectorAll(".hero-summary"),
-    hero.querySelector(".hero-actions"),
-    hero.querySelector(".hero-social-links"),
-  ].filter(Boolean);
-  const sequence = gsap.timeline();
-  sequence.fromTo(hero.querySelector(".hero-availability"), { y: 28, opacity: 0 }, { y: 0, opacity: 1, duration: .65, ease: "power3.out" });
-  sequence.fromTo(titleWords, { y: 28, opacity: 0 }, { y: 0, opacity: 1, duration: .9, stagger: .1, ease: "power3.out" });
-  sequence.fromTo(revealGroup, { y: 28, opacity: 0 }, { y: 0, opacity: 1, duration: .7, stagger: .1, ease: "power3.out" });
-  gsap.fromTo(portrait, { opacity: 0, scale: .94 }, { opacity: 1, scale: 1, duration: .9, delay: .2, ease: "power3.out" });
-  gsap.fromTo(hero.querySelectorAll(".hero-tile"), { opacity: 0, scale: .72 }, { opacity: 1, scale: 1, duration: .55, stagger: .09, delay: .45, ease: "back.out(1.6)" });
+  if (!reduce) {
+    gsap.set(".hx-line>*", { yPercent: 115 });
+    gsap.timeline({ defaults: { ease: "power4.out" } })
+      .to(".hx-line>*", { yPercent: 0, duration: 1.1, stagger: .14 })
+      .from(".hx-eyebrow,.hx-summary,.hx-cta>*,.hx-status", { y: 24, opacity: 0, stagger: .09, duration: .8 }, "-=.7")
+      .from(".hx-orbit", { scale: .85, opacity: 0, duration: 1.1, ease: "power3.out" }, "-=1.1");
+    gsap.from(".hx-about p", { y: 30, opacity: 0, stagger: .12, duration: .7, ease: "power2.out", scrollTrigger: { trigger: ".hx-about", start: "top 84%", once: true } });
+  }
+  initOrbit();
 }

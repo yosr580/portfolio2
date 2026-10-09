@@ -2,10 +2,10 @@ import "../data.js";
 
 const esc = (value) => String(value ?? "").replace(/[&<>"']/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[char]));
 const img = (key, label = key) => ({ type: "img", src: `assets/icons/${key}.svg`, label });
-const mask = (slug, label) => ({ type: "mask", src: `assets/icons/si-${slug}.svg`, label });
+const mask = (slug, label) => ({ type: "mask", src: `../assets/icons/si-${slug}.svg`, label });
 const mono = (text, label) => ({ type: "mono", text, label });
 export const ICONS = {
-  huggingface: mask("huggingface", "Hugging Face"), groq: mono("Gq", "Groq"), ollama: mask("ollama", "Ollama"), llama: mono("L", "LLaMA"), gemma: mono("Ge", "Gemma"), deepseek: mask("deepseek", "DeepSeek"),
+  huggingface: mask("huggingface", "Hugging Face"), groq: { ...img("groq", "Groq"), invertDark: true }, ollama: mask("ollama", "Ollama"), gemma: { ...img("gemma", "Gemma"), src: "assets/icons/gemma.png" }, deepseek: mask("deepseek", "DeepSeek"),
   tensorflow: img("tensorflow", "TensorFlow"), pytorch: img("pytorch", "PyTorch"), scikitlearn: img("scikitlearn", "Scikit-learn"), keras: img("keras", "Keras"), opencv: img("opencv", "OpenCV"), mediapipe: mask("mediapipe", "MediaPipe"),
   python: img("python", "Python"), numpy: img("numpy", "NumPy"), pandas: img("pandas", "Pandas"), jupyter: img("jupyter", "Jupyter"), matlab: img("matlab", "MATLAB"), cplusplus: img("cplusplus", "C/C++"),
   html5: img("html5", "HTML5"), css3: img("css3", "CSS3"), streamlit: img("streamlit", "Streamlit"), dotnetcore: img("dotnetcore", ".NET"), react: img("react", "React"), fastapi: img("fastapi", "FastAPI"), wordpress: img("wordpress", "WordPress"),
@@ -48,10 +48,4 @@ function renderEducation() {
 }
 export function initSkills() {
   renderSkills(); renderEducation();
-  const heroKeys = { "hero-tile-pytorch": "pytorch", "hero-tile-tensorflow": "tensorflow", "hero-tile-python": "python", "hero-tile-opencv": "opencv" };
-  document.querySelectorAll(".hero-tile").forEach((tile) => {
-    const key = Object.keys(heroKeys).find((className) => tile.classList.contains(className));
-    const icon = key && ICONS[heroKeys[key]]; const image = tile.querySelector("img");
-    if (icon && image) image.src = icon.src;
-  });
 }
