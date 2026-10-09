@@ -1,23 +1,11 @@
-﻿# Portfolio Progress
-
-- [x] 0 Audit + checkpoint
-- [ ] 1 Foundation (tokens, theme, nav, boot, motion)
-- [ ] 2 Hero
-- [ ] 3 Projects (+ lightbox)
-- [ ] 4 Skills
-- [ ] 5 Internships & Research
-- [ ] 6 Community ring carousel
-- [ ] 7 Websites, Design, Contact, Footer
-- [ ] 8 Social images + final QA
-
-## Notes / decisions
-- Stage 0 audit completed. Existing checkpoint: `90cbdfb` (`checkpoint before redesign stages`); working tree was clean.
-- Current implementation is a root-level static HTML/CSS/JS site (`index.html`, `style.css`, `script.js`, `data.js`, `motion.js`), not yet split into the planned `css/` and `js/` modules.
-- Local GSAP 3.12.5, ScrollTrigger, and Lenis assets are present under `assets/vendor/`; local skill logo SVGs and project/media assets are present.
-- The page currently orders Skills before Projects and has Education as its own section. Planned order groups About with Education and places Projects before Skills.
-- Use `assets/cv.txt` as the sole source for personal facts. It lists German as A2.
-
-## Known issues
-- The current page lists German B1 in `index.html`; this conflicts with `assets/cv.txt` (German A2).
-- Existing site files include the archived implementation and are substantially larger than the planned small-module layout; stage work should migrate in bounded pieces.
-- No `PROGRESS.md` existed at audit time.
+﻿# Audit status
+- Stage 1 — Exists: theme toggle, navigation, boot and motion in root files; Missing: planned css/ and js/ modules; Broken: none confirmed.
+- Stage 2 — Exists: hero section and avatar; Missing: stage 2 implementation checkpoint; Broken: none confirmed.
+- Stage 3 — Exists: project cards, expandable details and image lightbox; Missing: stage checkpoint; Broken: none confirmed.
+- Stage 4 — Exists: skill groups, logos and language labels; Missing: stage checkpoint; Broken: site says German B1, while assets/cv.txt says A2.
+- Stage 5 — Exists: experience timeline; Missing: stage checkpoint; Broken: 1440px full-page capture shows the timeline taking a disproportionate amount of page height.
+- Stage 6 — Exists: community role selector and ring carousel; Missing: stage checkpoint; Broken: none confirmed.
+- Stage 7 — Exists: Websites, Design, Contact and Footer sections; Missing: stage checkpoint; Broken: none confirmed.
+- Stage 8 — Exists: social preview assets and one 1440px audit capture; Missing: final QA; Broken: none confirmed.
+- AGENTS.md: not found. docs/cv.txt: missing; assets/cv.txt exists.
+- Screenshot: assets/social/site-audit-1440.png (1440px wide, full page, dark mode).
