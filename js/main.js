@@ -1,7 +1,8 @@
-﻿import { initTheme } from "./theme.js";
+import { initTheme } from "./theme.js";
 import { runBoot } from "./boot.js";
 import { initMotion } from "./motion.js";
 import { initFloaters } from "./floaters.js";
+import { initHero } from "./hero.js";
 
 function initNavigation() {
   const header = document.querySelector("#site-header");
@@ -39,4 +40,5 @@ initNavigation();
 runBoot().then(() => {
   initMotion();
   initFloaters();
+  initHero();
 });

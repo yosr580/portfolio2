@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en" data-theme="dark">
 <head>
   <meta charset="utf-8">
@@ -26,6 +26,7 @@
   <link rel="stylesheet" href="css/nav.css">
   <link rel="stylesheet" href="css/misc.css">
   <link rel="stylesheet" href="css/floaters.css">
+  <link rel="stylesheet" href="css/hero.css">
 </head>
 <body class="boot-active">
   <div class="bg-fx" aria-hidden="true"></div>
@@ -56,11 +57,70 @@
     </nav>
   </header>
   <main id="main">
-    <section class="section" id="about" aria-labelledby="about-title">
-      <div class="container section-head" data-reveal>
-        <p class="section-kicker">About</p>
-        <h1 class="section-title" id="about-title">A little about <span class="gradient-text">me.</span></h1>
-        <p class="section-intro">A short introduction to my studies and the questions I explore.</p>
+    <section class="hero" id="hero" aria-labelledby="hero-title">
+      <div class="hero-visual" aria-label="Portrait and areas of work">
+        <div class="hero-glow" aria-hidden="true"></div>
+        <figure class="hero-portrait-frame">
+          <img class="hero-portrait" src="assets/profile%20picture/profile%20picture.png" alt="Portrait of Yosr Jabloun" fetchpriority="high">
+        </figure>
+        <div class="hero-decorations" aria-hidden="true">
+          <span class="hero-chip hero-chip-enit">ENIT</span>
+          <span class="hero-chip hero-chip-ieee">IEEE</span>
+          <span class="hero-chip hero-chip-talan">AI intern at Talan</span>
+          <span class="hero-tile hero-tile-pytorch"><img src="assets/icons/pytorch.svg" alt=""></span>
+          <span class="hero-tile hero-tile-tensorflow"><img src="assets/icons/tensorflow.svg" alt=""></span>
+          <span class="hero-tile hero-tile-python"><img src="assets/icons/python.svg" alt=""></span>
+          <span class="hero-tile hero-tile-opencv"><img src="assets/icons/opencv.svg" alt=""></span>
+        </div>
+      </div>
+      <div class="hero-content">
+        <p class="hero-status"><span class="hero-status-dot" aria-hidden="true"></span>Open to a 6-month AI / Data Science engineering internship</p>
+        <h1 class="hero-title" id="hero-title"><span class="hero-title-word">Yosr</span> <span class="hero-title-word gradient-text">Jabloun</span></h1>
+        <p class="hero-role" aria-live="off"><span id="hero-role">AI &amp; Computer Vision</span><span class="hero-caret" aria-hidden="true"></span></p>
+        <p class="hero-summary">Telecommunications Engineering student at ENIT, specializing in Data Science for Intelligent Communications. My work spans AI, computer vision, and intelligent systems.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#projects">View projects</a>
+          <a class="button button-outline" href="assets/cv.pdf" download="Yosser-Jabloun-CV.pdf">Download CV</a>
+          <a class="button button-ghost" href="#contact">Contact</a>
+        </div>
+        <div class="hero-social-links" aria-label="Social links">
+          <a class="hero-social" href="https://www.linkedin.com/in/yosr-jabloun-232421333/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.55V9h3.57v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></svg>
+          </a>
+          <a class="hero-social" href="https://github.com/yosr580" target="_blank" rel="noreferrer" aria-label="GitHub">
+            <img src="assets/icons/github.svg" alt="">
+          </a>
+          <a class="hero-social" href="mailto:yosser.jabloun@etudiant-enit.utm.tn" aria-label="Email">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5-8-5V6l8 5 8-5v2Z"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+    <section class="section about-section" id="about" aria-labelledby="about-title">
+      <div class="container about-layout">
+        <div class="about-copy" data-reveal>
+          <p class="section-kicker">About</p>
+          <h2 class="section-title" id="about-title">What shapes <span class="gradient-text">my work.</span></h2>
+          <p class="section-intro">I am a telecommunications engineering student at the National Engineering School of Tunis (ENIT), specializing in Data Science for Intelligent Communications. I am also pursuing a Master of Research in Information Processing and Complexity of the Living. My work spans AI and machine learning, computer vision, optical communications, and intelligent systems. Through research and internships, I have studied world models and JEPA, built a real-time face anti-spoofing system, and developed a Tunisian Arabic lip-reading corpus. I also contribute to IEEE communities in Tunisia.</p>
+        </div>
+        <div class="about-stat-grid" id="about-stats" aria-label="Selected facts">
+          <article class="about-stat glass-card">
+            <strong class="about-stat-number" data-count="144">144</strong>
+            <span class="about-stat-label">National entrance exam rank, among 950+ candidates</span>
+          </article>
+          <article class="about-stat glass-card">
+            <strong class="about-stat-number" data-count="300" data-suffix="+">300+</strong>
+            <span class="about-stat-label">Members in the IEEE ENIT Student Branch community</span>
+          </article>
+          <article class="about-stat glass-card">
+            <strong class="about-stat-number" data-count="2" data-suffix="nd">2nd</strong>
+            <span class="about-stat-label">IEEE Region 8 Humanitarian Technologies Competition place</span>
+          </article>
+          <article class="about-stat glass-card">
+            <strong class="about-stat-number" data-count="2025">2025</strong>
+            <span class="about-stat-label">IEEE Tunisia Rising Star Member Award</span>
+          </article>
+        </div>
       </div>
     </section>
     <section class="section" id="projects" aria-labelledby="projects-title">
